@@ -176,6 +176,7 @@
     <Content Include="Content\img\portfolio\persona6.jpg" />
     <Content Include="Content\img\santiago.jpg" />
     <Content Include="Content\img\tejer.jpg" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
