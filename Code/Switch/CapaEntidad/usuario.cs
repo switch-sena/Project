@@ -16,7 +16,7 @@ namespace CapaEntidad
         public string genero_usua { get; set; }
         public DateTime fecha_nacimiento_usua { get; set; }
         public string celular_usua { get; set; }
-        public MailAddress correo_usua { get; set; }
+        public string correo_usua { get; set; }
         public string clave_usua { get; set; }
         public string correo_electronico_usua { get; set; }
         public string link_rs_usua { get; set; }
