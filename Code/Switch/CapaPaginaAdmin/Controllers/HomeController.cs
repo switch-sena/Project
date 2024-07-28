@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using CapaEntidad;
+using CapaPrincipal;
+
 namespace CapaPaginaAdmin.Controllers
 {
     public class HomeController : Controller
@@ -25,6 +28,14 @@ namespace CapaPaginaAdmin.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult ListarUsuarios()
+        {
+            List<usuario> oLista = new List<usuario>();
+            oLista = new CN_Usuarios().Listar();
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
     }
 }
