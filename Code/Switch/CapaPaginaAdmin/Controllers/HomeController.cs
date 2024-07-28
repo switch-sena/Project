@@ -30,11 +30,12 @@ namespace CapaPaginaAdmin.Controllers
             return View();
         }
 
+        [HttpGet]
         public JsonResult ListarUsuarios()
         {
             List<usuario> oLista = new List<usuario>();
             oLista = new CN_Usuarios().Listar();
-            return Json(oLista, JsonRequestBehavior.AllowGet);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
     }
 }
