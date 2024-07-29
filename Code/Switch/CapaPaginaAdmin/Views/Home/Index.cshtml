@@ -3,67 +3,168 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<!-- Tabla de usuarios -->
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de Usuarios
+    </div>
 
-    <div class="card">
-        <div class="card-header">
-            <i class="fas fa-users me-1"></i> Lista de Usuarios
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear Nuevo</button>
+            </div>
         </div>
 
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12">
-                    <button type="button" class="btn btn-success">Crear Nuevo</button>
+        <hr />
+
+        <table id="tabla" class="display cell-border" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Celular</th>
+                    <th>Correo</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Procesos</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="FormNew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Usuario Nuevo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body g-2">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="txtnombres" class="form-label">Nombres*</label>
+                        <input type="text" class="form-control" id="txtnombres" placeholder="Pepito">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtapellidos" class="form-label">Apellidos*</label>
+                        <input type="text" class="form-control" id="txtapellidos" placeholder="Perez">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbogenero" class="form-label">Genero</label>
+                        <select id="cbogenero" class="form-select">
+                            <option selected>Seleccione el genero</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtfechana" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="txtfechana">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtcelular" class="form-label">Celular</label>
+                        <input type="number" class="form-control" id="txtcelular">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtcorreo" class="form-label">Correo*</label>
+                        <input type="email" class="form-control" id="txtcorreo" placeholder="name@example.com">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtcontraseña" class="form-label">Constraseña*</label>
+                        <input type="password" class="form-control" id="txtcontraseña" placeholder="name@example.com">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtcorreoelec" class="form-label">Correo Electronico</label>
+                        <input type="email" class="form-control" id="txtcorreoelec" placeholder="name@example.com">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="txtlinks" class="form-label">Links de redes sociales</label>
+                        <input type="text" class="form-control" id="txtlinks">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="cbobarrio" class="form-label">Barrio</label>
+                        <select id="cbobarrio" class="form-select">
+                            <option selected>Seleccione el genero</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
-
-            <hr />
-
-            <table id="tabla" class="display cell-border" style="width: 100%">
-                <thead>
-                    <tr>
-                        <th>Nombres</th>
-                        <th>Apellidos</th>
-                        <th>Celular</th>
-                        <th>Correo</th>
-                        <th>Fecha de nacimiento</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                </tbody>  
-            </table>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar </button>
+            </div>
         </div>
-
     </div>
+</div>
 
 @section scripts
     {
     <script>
 
-        var tabladata;
-
-
-
-        jQuery.ajax({
-            url: '@Url.Action("ListarUsuarios","Home")',
-            type: "GET",
-            datatypr: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
- 
-                console.log(data)
-            }
-
-        })
+        /* configuracion de la tabla de los usuarios */
 
         tabladata = $("#tabla").DataTable({
             responsive: true,
-            ordering: true
+            ordering: false,
+            "ajax":
+            {
+                url: '@Url.Action("ListarUsuarios","Home")',
+                type: "GET",
+                datatypr: "json"
+            },
+            "columns":
+            [
+                    { "data": "nombre_usua" },
+                    { "data": "apellido_usua" },
+                    { "data": "celular_usua" },
+                    { "data": "correo_usua" },
+                    { "data": "fecha_nacimiento_usua" },
+                    {
+                        "defaulContent": '<button type="button" class="btn btn-success"><i class="fas fa-pen"></i></button>' +
+                            '<button type="button" class="btn btn-danger ms-2"><i class="fas fa-trash"></i></button>',
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "90px"
+                    }
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.1.2/i18n/es-MX.json',
+            }
         });
+
+        /* aparicion del modal con el boton de "crear nuevo" */
+
+        function abrirModal() {
+
+            $("#FormNew").modal("show")
+        }
+
+        /* aparicion del modal con el boton de "editar" */
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {
+
+            var filaseleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(filaseleccionada).data();
+
+        })
+
     </script>
-    }
+}
