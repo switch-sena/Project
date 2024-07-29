@@ -12,10 +12,14 @@ namespace CapaPaginaAdmin
                         "~/Scripts/jquery-{version}.js"));
 
             //JULIAAAAAAAAAAAAAAAAAANNNNNNNNNNNN NO VAYA A BORRAR ESTE BUNDLE AGREGUE AQUI LOS QUE DICE EL VIDEO
+            //QUEEEEEEEEEEEEEEEEEEEEEEEE LOOOOOOOOOOOOOOOOOOOS BORREEEEEEEEEEEEEEEEEEE DICEEEEEEEEEEEEEEEEEEEEEE
             bundles.Add(new Bundle("~/bundles/complementos").Include(
                       "~/Scripts/DataTables/jquery.dataTables.js",
                       "~/Scripts/DataTables/dataTables.responsive.js",
-                      "~/Scripts/scripts.js"));
+                      "~/Scripts/scripts.js",
+                      "~/Scripts/scripts.js",
+                      "~/Scripts/fontawesome/all.min.js",
+                      "~/Scripts/scripts2.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
