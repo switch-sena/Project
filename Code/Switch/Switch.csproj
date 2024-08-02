@@ -183,6 +183,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\SwitchContext.cs" />
+    <Compile Include="Controllers\BarriosController.cs" />
+    <Compile Include="Controllers\HabilidadsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -190,6 +192,7 @@
     </Compile>
     <Compile Include="Models\Barrio.cs" />
     <Compile Include="Models\Genero.cs" />
+    <Compile Include="Models\Habilidad.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -387,6 +390,11 @@
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Barrios\Create.cshtml" />
+    <Content Include="Views\Barrios\Edit.cshtml" />
+    <Content Include="Views\Habilidads\Create.cshtml" />
+    <Content Include="Views\Habilidads\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

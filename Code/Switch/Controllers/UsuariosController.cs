@@ -89,6 +89,13 @@ namespace Switch.Controllers
             {
                 return HttpNotFound();
             }
+            var barrios = db.Barrios.ToList();
+            List<Genero> generos = new List<Genero>();
+            generos.Add(new Genero() { Id = 1, Nombre = "Masculino" });
+            generos.Add(new Genero() { Id = 2, Nombre = "Femenino" });
+
+            ViewBag.Barrios = new SelectList(barrios, "IdBarr", "NombreBarr");
+            ViewBag.Generos = new SelectList(generos, "Nombre", "Nombre");
             return View(usuario);
         }
 

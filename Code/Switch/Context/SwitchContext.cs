@@ -12,6 +12,7 @@ namespace Switch.Context
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Barrio> Barrios { get; set; }
+        public DbSet<Habilidad> Habilidad { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,6 +46,13 @@ namespace Switch.Context
                .HasRequired(u => u.Barrio)
                .WithMany(b => b.Usuarios)
                .HasForeignKey(u => u.CopiaIdBarr);
+
+            //Configuración de la taba 'habilidades'
+            modelBuilder.Entity<Habilidad>().ToTable("habilidades");
+            modelBuilder.Entity<Habilidad>().HasKey(u => u.Id_Habi);
+            modelBuilder.Entity<Habilidad>().Property(u => u.Id_Habi).HasColumnName("id_habi").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<Habilidad>().Property(u => u.Nombre_Habi).HasColumnName("nombre_habi");
+            modelBuilder.Entity<Habilidad>().Property(u => u.Descripcion_Habi).HasColumnName("descripcion_habi");
         }
     }
 }
