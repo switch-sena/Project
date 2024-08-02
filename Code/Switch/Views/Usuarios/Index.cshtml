@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Switch.Models.Usuario>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
+    <style>
+        table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting_asc_disabled, table.dataTable thead > tr > th.sorting_desc_disabled, table.dataTable thead > tr > td.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting_asc_disabled, table.dataTable thead > tr > td.sorting_desc_disabled {
+            cursor: pointer;
+            position: relative;
+            padding-right: 26px;
+            color: black;
+        }
+
+        table.dataTable tbody th, table.dataTable tbody td {
+            padding: 8px 10px;
+            color: black;
+        }
+    </style>
+</head>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<table class="table table-responsive" id="tableUsuarios">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NombreUsua)</th>
+            <th>@Html.DisplayNameFor(model => model.ApellidoUsua)</th>
+            <th>@Html.DisplayNameFor(model => model.GeneroUsua)</th>
+            <th>@Html.DisplayNameFor(model => model.FechaNacimientoUsua)</th>
+            <th>@Html.DisplayNameFor(model => model.CelularUsua)</th>
+            <th>@Html.DisplayNameFor(model => model.CorreoElectronicoUsua)</th>
+            <th>@Html.DisplayNameFor(model => model.CopiaIdBarr)</th>
+            <th></th> <!-- Para las acciones -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.NombreUsua)</td>
+                <td>@Html.DisplayFor(modelItem => item.ApellidoUsua)</td>
+                <td>@Html.DisplayFor(modelItem => item.GeneroUsua)</td>
+                <td>@Html.DisplayFor(modelItem => item.FechaNacimientoUsua)</td>
+                <td>@Html.DisplayFor(modelItem => item.CelularUsua)</td>
+                <td>@Html.DisplayFor(modelItem => item.CorreoElectronicoUsua)</td>
+                <td>@Html.DisplayFor(modelItem => item.Barrio.NombreBarr)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUsua }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdUsua }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUsua })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    let table = new DataTable('#tableUsuarios');
+</script>
