@@ -28,40 +28,58 @@
 <br />
 <br />
 <br />
-<table class="table table-responsive" id="tableUsuarios">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.NombreUsua)</th>
-            <th>@Html.DisplayNameFor(model => model.ApellidoUsua)</th>
-            <th>@Html.DisplayNameFor(model => model.GeneroUsua)</th>
-            <th>@Html.DisplayNameFor(model => model.FechaNacimientoUsua)</th>
-            <th>@Html.DisplayNameFor(model => model.CelularUsua)</th>
-            <th>@Html.DisplayNameFor(model => model.CorreoElectronicoUsua)</th>
-            <th>@Html.DisplayNameFor(model => model.CopiaIdBarr)</th>
-            <th></th> <!-- Para las acciones -->
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.NombreUsua)</td>
-                <td>@Html.DisplayFor(modelItem => item.ApellidoUsua)</td>
-                <td>@Html.DisplayFor(modelItem => item.GeneroUsua)</td>
-                <td>@Html.DisplayFor(modelItem => item.FechaNacimientoUsua)</td>
-                <td>@Html.DisplayFor(modelItem => item.CelularUsua)</td>
-                <td>@Html.DisplayFor(modelItem => item.CorreoElectronicoUsua)</td>
-                <td>@Html.DisplayFor(modelItem => item.Barrio.NombreBarr)</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdUsua }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdUsua }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdUsua })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-users me-1"></i> Lista de usuarios
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                @*<button type="button" class="btn btn-success" href="@Url.Action("Create", "Usuarios")">Crear Usuario</button>*@
+                <a href="@Url.Action("Create", "Usuarios")" class="btn btn-success">Crear Usuario</a>
+            </div>
+        </div>
+
+        <hr />
+
+        <table class="table table-responsive" id="tableUsuarios">
+            <thead>
+                <tr>
+                    <th>@*@Html.DisplayNameFor(model => model.NombreUsua)*@</th>
+                    <th>@*@Html.DisplayNameFor(model => model.ApellidoUsua)*@</th>
+                    <th>@*@Html.DisplayNameFor(model => model.GeneroUsua)*@</th>
+                    <th>@*@Html.DisplayNameFor(model => model.FechaNacimientoUsua)*@</th>
+                    <th>@*@Html.DisplayNameFor(model => model.CelularUsua)*@</th>
+                    <th>@*@Html.DisplayNameFor(model => model.CorreoElectronicoUsua)*@</th>
+                    <th>@*@Html.DisplayNameFor(model => model.CopiaIdBarr)*@</th>
+                    <th></th> <!-- Para las acciones -->
+                </tr>
+            </thead>
+            <tbody>
+                @*@foreach (var item in Model)*@
+                @*{*@
+                    <tr>
+                        <td>@*@Html.DisplayFor(modelItem => item.NombreUsua)*@</td>
+                        <td>@*@Html.DisplayFor(modelItem => item.ApellidoUsua)*@</td>
+                        <td>@*@Html.DisplayFor(modelItem => item.GeneroUsua)*@</td>
+                        <td>@*@Html.DisplayFor(modelItem => item.FechaNacimientoUsua)*@</td>
+                        <td>@*@Html.DisplayFor(modelItem => item.CelularUsua)*@</td>
+                        <td>@*@Html.DisplayFor(modelItem => item.CorreoElectronicoUsua)*@</td>
+                        <td>@*@Html.DisplayFor(modelItem => item.Barrio.NombreBarr)*@</td>
+                        <td>
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.IdUsua }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IdUsua }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdUsua })*@
+                        </td>
+                    </tr>
+                @*}*@
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 <script>
-    let table = new DataTable('#tableUsuarios');
+    let table = new DataTable('#tabla');
 </script>

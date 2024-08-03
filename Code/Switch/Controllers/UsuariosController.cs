@@ -18,7 +18,7 @@ namespace Switch.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(/*db.Usuarios.ToList()*/);
         }
 
         // GET: Usuarios/Details/5
