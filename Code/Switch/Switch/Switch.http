@@ -1,0 +1,6 @@
+@Switch_HostAddress = http://localhost:5070
+
+GET {{Switch_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
