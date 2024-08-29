@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Switch.Models
 {
-    public class Modalidad
+    public class Modalidades
     {
         [Key]
         public int IdModa { get; set; }
@@ -15,6 +15,6 @@ namespace Switch.Models
         public string DescripcionModa { get; set; }
 
         // Propiedad de navegación
-        public ICollection<Publicacion> Publicaciones { get; set; }
+        public ICollection<Publicaciones> Publicaciones { get; set; }
     }
 }

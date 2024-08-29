@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Switch.Models
 {
-    public class Usuario
+    public class Usuarios
     {
         [Key]
         public int IdUsua { get; set; }
@@ -48,8 +48,8 @@ namespace Switch.Models
 
         // Propiedad de navegación
         [ForeignKey("CopiaIdbarr")]
-        public Barrio Barrio { get; set; }
+        public Barrios Barrio { get; set; }
 
-        public ICollection<Publicacion> Publicaciones { get; set; }
+        public ICollection<Publicaciones> Publicaciones { get; set; }
     }
 }

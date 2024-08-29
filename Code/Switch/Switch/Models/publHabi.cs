@@ -13,7 +13,7 @@ namespace Switch.Models
 
         // Propiedades de navegación
         [ForeignKey("CopiaIdpubl")]
-        public Publicacion Publicacion { get; set; }
+        public Publicaciones Publicacion { get; set; }
 
         [ForeignKey("CopiaIdhabi")]
         public Habilidad Habilidad { get; set; }

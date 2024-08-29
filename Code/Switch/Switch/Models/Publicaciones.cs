@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Switch.Models
 {
-    public class Publicacion
+    public class Publicaciones
     {
         [Key]
         public int IdPubl { get; set; }

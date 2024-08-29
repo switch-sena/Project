@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Switch.Models
 {
-    public class Barrio
+    public class Barrios
     {
         [Key]
         public int IdBarr { get; set; }

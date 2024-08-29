@@ -12,7 +12,7 @@ namespace Switch.Context
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Barrio> Barrios { get; set; }
+        public DbSet<Barrios> Barrios { get; set; }
         public DbSet<Habilidad> Habilidades { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,9 +36,9 @@ namespace Switch.Context
             modelBuilder.Entity<Usuario>().Property(u => u.ModificacionFechaUsua).HasColumnName("modificacionfecha_usua");
 
             // Configuración de la tabla 'barrios'
-            modelBuilder.Entity<Barrio>().ToTable("barrios").HasKey(b => b.IdBarr);
-            modelBuilder.Entity<Barrio>().Property(b => b.IdBarr).HasColumnName("id_barr").ValueGeneratedOnAdd();
-            modelBuilder.Entity<Barrio>().Property(b => b.NombreBarr).HasColumnName("nombre_barr");
+            modelBuilder.Entity<Barrios>().ToTable("barrios").HasKey(b => b.IdBarr);
+            modelBuilder.Entity<Barrios>().Property(b => b.IdBarr).HasColumnName("id_barr").ValueGeneratedOnAdd();
+            modelBuilder.Entity<Barrios>().Property(b => b.NombreBarr).HasColumnName("nombre_barr");
 
             // Configuración de la relación entre Usuario y Barrio
             modelBuilder.Entity<Usuario>().HasOne(u => u.Barrio).WithMany(b => b.Usuarios).HasForeignKey(u => u.CopiaIdBarr);
