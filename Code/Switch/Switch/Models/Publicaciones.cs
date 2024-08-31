@@ -21,10 +21,10 @@ namespace Switch.Models
 
         // Propiedades de navegación
         [ForeignKey("CopiaIdusua")]
-        public Usuario Usuario { get; set; }
+        public Usuarios Usuario { get; set; }
 
         [ForeignKey("CopiaIdmoda")]
-        public Modalidad Modalidad { get; set; }
+        public Modalidades Modalidades { get; set; }
 
         public ICollection<PublHabi> PublHabis { get; set; }
     }

@@ -13,6 +13,6 @@ namespace Switch.Models
         public string NombreBarr { get; set; }
 
         // Propiedad de navegación
-        public ICollection<Usuario> Usuarios { get; set; }
+        public ICollection<Usuarios> Usuarios { get; set; }
     }
 }
