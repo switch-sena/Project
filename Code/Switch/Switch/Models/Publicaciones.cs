@@ -9,8 +9,7 @@ namespace Switch.Models
         [Key]
         public int IdPubl { get; set; }
 
-        public int CopiaIdusua { get; set; }
-        public int CopiaIdmoda { get; set; }
+        public int CopiaIdUsua { get; set; }
 
         [Required]
         [MaxLength(60)]
@@ -20,12 +19,11 @@ namespace Switch.Models
         public string DescripcionPubl { get; set; }
 
         // Propiedades de navegación
-        [ForeignKey("CopiaIdusua")]
-        public Usuarios Usuario { get; set; }
+        [ForeignKey("CopiaIdUsua")]
+        public Usuarios Usuarios { get; set; }
 
-        [ForeignKey("CopiaIdmoda")]
-        public Modalidades Modalidades { get; set; }
+        public ICollection<PublHabi> PublHabi { get; set; }
+        public ICollection<PublModa> PublModa { get; set; }
 
-        public ICollection<PublHabi> PublHabis { get; set; }
     }
 }

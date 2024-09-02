@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Switch.Models
 {
-    public class Habilidad
+    public class Habilidades
     {
         [Key]
         public int IdHabi { get; set; }
@@ -15,6 +15,6 @@ namespace Switch.Models
         public string DescripcionHabi { get; set; }
 
         // Propiedad de navegación
-        public ICollection<PublHabi> PublHabis { get; set; }
+        public ICollection<PublHabi> PublHabi { get; set; }
     }
 }

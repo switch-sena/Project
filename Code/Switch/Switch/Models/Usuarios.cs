@@ -41,13 +41,13 @@ namespace Switch.Models
 
         public string LinksRsUsua { get; set; }
 
-        public int CopiaIdbarr { get; set; }
+        public int CopiaIdBarr { get; set; }
 
-        public DateTime CreacionfechaUsua { get; set; } = DateTime.Now;
-        public DateTime? ModificacionfechaUsua { get; set; }
+        public DateTime CreacionFechaUsua { get; set; } = DateTime.Now;
+        public DateTime ModificacionFechaUsua { get; set; }
 
         // Propiedad de navegación
-        [ForeignKey("CopiaIdbarr")]
+        [ForeignKey("CopiaIdBarr")]
         public Barrios Barrio { get; set; }
 
         public ICollection<Publicaciones> Publicaciones { get; set; }

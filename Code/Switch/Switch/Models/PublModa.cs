@@ -1,21 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Switch.Models
 {
-    public class PublHabi
+    public class PublModa
     {
         [Key]
         public int Id { get; set; }
 
         public int CopiaIdPubl { get; set; }
-        public int CopiaIdHabi { get; set; }
 
-        // Propiedades de navegación
+        public int CopiaIdModa { get; set; }
+
         [ForeignKey("CopiaIdPubl")]
         public Publicaciones Publicaciones { get; set; }
 
-        [ForeignKey("CopiaIdHabi")]
-        public Habilidades Habilidades { get; set; }
+        [ForeignKey("CopiaIdModa")]
+        public Modalidades Modalidades { get; set; }
     }
 }

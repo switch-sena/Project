@@ -15,6 +15,6 @@ namespace Switch.Models
         public string DescripcionModa { get; set; }
 
         // Propiedad de navegación
-        public ICollection<Publicaciones> Publicaciones { get; set; }
+        public ICollection<PublModa> PublModa { get; set; }
     }
 }
