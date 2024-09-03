@@ -3,11 +3,11 @@ using System.Threading;
 using Microsoft.EntityFrameworkCore;
 using Switch.Models;
 
-namespace Switch.Context
+namespace Switch.Repositories
 {
     public class SwitchContext : DbContext
     {
-        public SwitchContext(DbContextOptions<SwitchContext> options) : base(options)
+        public SwitchContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -22,7 +22,11 @@ namespace Switch.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            EntityConfuguration(modelBuilder);
 
+        }
+        private void EntityConfuguration(ModelBuilder modelBuilder)
+        {
             // Configuración de la tabla 'barrios'
             modelBuilder.Entity<Barrios>().ToTable("barrios").HasKey(b => b.IdBarr);
             modelBuilder.Entity<Barrios>().Property(b => b.IdBarr).HasColumnName("id_barr").ValueGeneratedOnAdd();
@@ -99,6 +103,10 @@ namespace Switch.Context
             // Configuración de la relación entre PublHabi y publicaciones, PublHabi y habilidades
             modelBuilder.Entity<PublHabi>().HasOne(u => u.Publicaciones).WithMany(b => b.PublHabi).HasForeignKey(u => u.CopiaIdPubl);
             modelBuilder.Entity<PublHabi>().HasOne(u => u.Habilidades).WithMany(b => b.PublHabi).HasForeignKey(u => u.CopiaIdHabi);
+        }
+        public async Task<bool> SaveAsync()
+        {
+            return await SaveChangesAsync() > 0;
         }
     }
 }
