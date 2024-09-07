@@ -2,7 +2,7 @@
 using Switch.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace MicroServiceCRUD
+namespace Switch
 {
     public static class DependencyInjectionService
     {
