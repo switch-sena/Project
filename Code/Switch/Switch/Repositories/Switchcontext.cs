@@ -101,7 +101,7 @@ namespace Switch.Repositories
             modelBuilder.Entity<PublHabi>().Property(b => b.CopiaIdHabi).HasColumnName("copia_idhabi");
 
             // Configuración de la relación entre PublHabi y publicaciones, PublHabi y habilidades
-            modelBuilder.Entity<PublHabi>().HasOne(u => u.Publicaciones).WithMany(b => b.PublHabi).HasForeignKey(u => u.CopiaIdPubl);
+            
             modelBuilder.Entity<PublHabi>().HasOne(u => u.Habilidades).WithMany(b => b.PublHabi).HasForeignKey(u => u.CopiaIdHabi);
         }
         public async Task<bool> SaveAsync()
