@@ -53,3 +53,4 @@ namespace Switch.Models
         public ICollection<Publicaciones> Publicaciones { get; set; }
     }
 }
+

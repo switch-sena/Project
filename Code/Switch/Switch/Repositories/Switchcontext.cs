@@ -11,6 +11,7 @@ namespace Switch.Repositories
         {
         }
 
+
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Barrios> Barrios { get; set; }
         public DbSet<Publicaciones> Publicaciones { get; set; }
