@@ -11,7 +11,6 @@ namespace Switch.Repositories
         {
         }
 
-
         public DbSet<Usuarios> Usuarios { get; set; }
         public DbSet<Barrios> Barrios { get; set; }
         public DbSet<Publicaciones> Publicaciones { get; set; }
@@ -26,6 +25,9 @@ namespace Switch.Repositories
             EntityConfuguration(modelBuilder);
 
         }
+
+
+
         private void EntityConfuguration(ModelBuilder modelBuilder)
         {
             // Configuración de la tabla 'barrios'
@@ -104,6 +106,7 @@ namespace Switch.Repositories
             // Configuración de la relación entre PublHabi y publicaciones, PublHabi y habilidades
             
             modelBuilder.Entity<PublHabi>().HasOne(u => u.Habilidades).WithMany(b => b.PublHabi).HasForeignKey(u => u.CopiaIdHabi);
+
         }
         public async Task<bool> SaveAsync()
         {
