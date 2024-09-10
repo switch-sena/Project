@@ -20,7 +20,7 @@ namespace Switch.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> GetADSO()
+        public async Task<IActionResult> GetBarrios()
         {
             var response = await _repository.GetBarrios();
             return Ok(response);

@@ -7,7 +7,7 @@ namespace Switch.Repositories.Interfaces
     {
         Task<List<Usuarios>> GetUsuarios();
         Task<Usuarios> GetUsuarioById(int id);
-        Task<bool> CreateUsuario(Usuarios usuario);
+        Task<bool> PostUsuario(Usuarios usuario);
         Task<bool> UpdateUsuario(Usuarios usuario);
         Task<bool> DeleteUsuario(int id);
     }

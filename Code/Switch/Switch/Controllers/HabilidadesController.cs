@@ -16,6 +16,9 @@ namespace Switch.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetHabilidades()
         {
             var habilidades = await _repository.GetHabilidades();
@@ -23,8 +26,12 @@ namespace Switch.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetHabilidad(int id)
         {
+            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
             var habilidad = await _repository.GetHabilidadById(id);
             if (habilidad == null) return NotFound();
             return Ok(habilidad);
@@ -33,7 +40,8 @@ namespace Switch.Controllers
         [HttpPost]
         public async Task<IActionResult> PostHabilidad([FromBody] Habilidades habilidad)
         {
-            var result = await _repository.AddHabilidad(habilidad);
+            //preguntar a duveimar como funciona
+            var result = await _repository.PostHabilidad(habilidad);
             if (result) return CreatedAtAction(nameof(GetHabilidad), new { id = habilidad.IdHabi }, habilidad);
             return BadRequest();
         }
@@ -41,6 +49,7 @@ namespace Switch.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutHabilidad(int id, [FromBody] Habilidades habilidad)
         {
+            //preguntar a duveimar como funciona
             if (id != habilidad.IdHabi) return BadRequest();
             var result = await _repository.UpdateHabilidad(habilidad);
             if (result) return NoContent();
@@ -50,6 +59,7 @@ namespace Switch.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteHabilidad(int id)
         {
+            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
             var result = await _repository.DeleteHabilidad(id);
             if (result) return NoContent();
             return NotFound();

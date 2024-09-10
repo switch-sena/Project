@@ -30,11 +30,11 @@ namespace Switch.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreatePublHabi([FromBody] PublHabi publHabi)
+        public async Task<IActionResult> PostPublHabi([FromBody] PublHabi publHabi)
         {
             try
             {
-                var response = await _repository.CreatePublHabi(publHabi);
+                var response = await _repository.PostPublHabi(publHabi);
                 if (response)
                     return CreatedAtAction(nameof(GetPublHabi), new { id = publHabi.Id }, publHabi);
                 return BadRequest("Error al crear PublHabi.");

@@ -23,7 +23,7 @@ namespace Switch.Repositories
             return await _context.Usuarios.FindAsync(id);
         }
 
-        public async Task<bool> CreateUsuario(Usuarios usuario)
+        public async Task<bool> PostUsuario(Usuarios usuario)
         {
             _context.Usuarios.Add(usuario);
             return await _context.SaveChangesAsync() > 0;

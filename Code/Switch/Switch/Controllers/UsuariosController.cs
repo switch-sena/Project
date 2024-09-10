@@ -40,9 +40,9 @@ namespace Switch.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateUsuario([FromBody] Usuarios usuario)
+        public async Task<IActionResult> PostUsuario([FromBody] Usuarios usuario)
         {
-            var created = await _repository.CreateUsuario(usuario);
+            var created = await _repository.PostUsuario(usuario);
             if (created)
                 return CreatedAtAction(nameof(GetUsuarioById), new { id = usuario.IdUsua }, usuario);
             return BadRequest();

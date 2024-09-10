@@ -6,7 +6,7 @@ namespace Switch.Repositories.Interfaces
     {
         Task<List<Habilidades>> GetHabilidades();
         Task<Habilidades> GetHabilidadById(int id);
-        Task<bool> AddHabilidad(Habilidades habilidad);
+        Task<bool> PostHabilidad(Habilidades habilidad);
         Task<bool> UpdateHabilidad(Habilidades habilidad);
         Task<bool> DeleteHabilidad(int id);
     }
