@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Switch.Models
 {
@@ -13,6 +14,7 @@ namespace Switch.Models
         public string NombreBarr { get; set; }
 
         // Propiedad de navegación
-        public ICollection<Usuarios> Usuarios { get; set; }
+        [JsonIgnore]
+        public ICollection<Usuarios>? Usuarios { get; set; }
     }
 }

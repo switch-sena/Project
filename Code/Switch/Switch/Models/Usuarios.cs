@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
+using System.Text.Json.Serialization;
 
 namespace Switch.Models
 {
@@ -47,10 +48,12 @@ namespace Switch.Models
         public DateTime ModificacionFechaUsua { get; set; }
 
         // Propiedad de navegación
+        [JsonIgnore]
         [ForeignKey("CopiaIdBarr")]
-        public Barrios Barrio { get; set; }
+        public Barrios? Barrio { get; set; }
 
-        public ICollection<Publicaciones> Publicaciones { get; set; }
+        [JsonIgnore]
+        public ICollection<Publicaciones>? Publicaciones { get; set; }
     }
 }
 

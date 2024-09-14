@@ -1,9 +1,11 @@
 ﻿using Switch.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Switch.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Switch.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase

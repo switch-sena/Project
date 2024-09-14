@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Switch.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PublicacionesController : ControllerBase

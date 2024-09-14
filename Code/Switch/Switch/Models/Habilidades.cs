@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Switch.Models
 {
@@ -15,6 +16,7 @@ namespace Switch.Models
         public string DescripcionHabi { get; set; }
 
         // Propiedad de navegación
-        public ICollection<PublHabi> PublHabi { get; set; }
+        [JsonIgnore]
+        public ICollection<PublHabi>? PublHabi { get; set; }
     }
 }

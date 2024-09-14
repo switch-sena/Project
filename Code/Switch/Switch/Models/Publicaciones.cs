@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Switch.Models
 {
@@ -18,10 +19,11 @@ namespace Switch.Models
         public int CopiaIdUsua { get; set; }
 
         // Relación con Usuarios
-        public Usuarios Usuarios { get; set; }
+        [JsonIgnore]
+        public Usuarios? Usuarios { get; set; }
 
         // Propiedad de navegación
-        public ICollection<PublModa> PublModa { get; set; }
-        public object PublHabi { get; set; }
+        [JsonIgnore]
+        public ICollection<PublModa>? PublModa { get; set; }
     }
 }

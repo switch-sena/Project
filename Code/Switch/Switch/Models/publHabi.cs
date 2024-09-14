@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Switch.Models
 {
@@ -12,10 +13,12 @@ namespace Switch.Models
         public int CopiaIdHabi { get; set; }
 
         // Propiedades de navegación
+        [JsonIgnore]
         [ForeignKey("CopiaIdPubl")]
-        public Publicaciones Publicaciones { get; set; }
+        public Publicaciones? Publicaciones { get; set; }
 
+        [JsonIgnore]
         [ForeignKey("CopiaIdHabi")]
-        public Habilidades Habilidades { get; set; }
+        public Habilidades? Habilidades { get; set; }
     }
 }

@@ -13,6 +13,13 @@ namespace Switch
 
             services.AddDbContext<SwitchContext>(options => options.UseSqlServer(connectionString));
             services.AddScoped<IBarriosRepository, BarriosRepository>();
+            services.AddScoped<IHabilidadesRepository, HabilidadesRepository>();
+            services.AddScoped<IModalidadesRepository, ModalidadesRepository>();
+            services.AddScoped<IPublHabiRepository, PublHabiRepository>();
+            services.AddScoped<IPublicacionesRepository, PublicacionesRepository>();
+            services.AddScoped<IPublModaRepository, PublModaRepository>();
+            services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+
 
 
             return services;
