@@ -1,6 +1,5 @@
 ﻿using Switch.Models;
 using Switch.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace Switch.Repositories
 {
