@@ -5,7 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Switch.Controllers
+namespace SwitchBack.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

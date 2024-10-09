@@ -1,7 +1,7 @@
 ﻿
-using Switch.Models;
+using SwitchBack.Models;
 
-namespace Switch.Repositories.Interfaces
+namespace SwitchBack.Repositories.Interfaces
 {
     public interface IPublicacionesRepository
     {

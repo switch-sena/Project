@@ -1,8 +1,8 @@
-﻿using Switch.Models;
-using Switch.Repositories.Interfaces;
+﻿using SwitchBack.Models;
+using SwitchBack.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Switch.Repositories
+namespace SwitchBack.Repositories
 {
     public class ModalidadesRepository : IModalidadesRepository
     {

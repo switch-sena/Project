@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Switch.Repositories.Interfaces;
-using Switch.Models;
+using SwitchBack.Repositories.Interfaces;
+using SwitchBack.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Switch.Controllers
+namespace SwitchBack.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]

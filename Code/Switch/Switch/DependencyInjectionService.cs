@@ -1,8 +1,8 @@
-﻿using Switch.Repositories;
-using Switch.Repositories.Interfaces;
+﻿using SwitchBack.Repositories;
+using SwitchBack.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Switch
+namespace SwitchBack
 {
     public static class DependencyInjectionService
     {

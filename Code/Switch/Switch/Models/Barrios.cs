@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Switch.Models
+namespace SwitchBack.Models
 {
     public class Barrios
     {

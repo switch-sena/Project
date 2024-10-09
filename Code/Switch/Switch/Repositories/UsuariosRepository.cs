@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Switch.Models;
-using Switch.Repositories.Interfaces;
+using SwitchBack.Models;
+using SwitchBack.Repositories.Interfaces;
 
-namespace Switch.Repositories
+namespace SwitchBack.Repositories
 {
     public class UsuariosRepository : IUsuariosRepository
     {

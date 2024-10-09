@@ -1,9 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Threading;
-using Microsoft.EntityFrameworkCore;
-using Switch.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SwitchBack.Models;
 
-namespace Switch.Repositories
+namespace SwitchBack.Repositories
 {
     public class SwitchContext : DbContext
     {

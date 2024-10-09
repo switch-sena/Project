@@ -1,7 +1,8 @@
-﻿using Switch.Models;
-using Switch.Repositories.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SwitchBack.Models;
+using SwitchBack.Repositories.Interfaces;
 
-namespace Switch.Repositories
+namespace SwitchBack.Repositories
 {
     public class BarriosRepository : IBarriosRepository
     {
