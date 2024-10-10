@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ConsumeMicroservices.Models.Usuarios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneroUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CelularUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorreoUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClaveUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorreoElectronicoUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LinksRsUsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CopiaIdBarr)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneroUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CelularUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorreoUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaveUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorreoElectronicoUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LinksRsUsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CopiaIdBarr)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdUsua }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdUsua }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdUsua })
+        </td>
+    </tr>
+}
+
+</table>
