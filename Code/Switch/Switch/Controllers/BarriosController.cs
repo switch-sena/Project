@@ -27,6 +27,18 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetBarriosById(int id)
+        {
+            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
+            var barrio = await _repository.GetBarriosById(id);
+            if (barrio == null) return NotFound();
+            return Ok(barrio);
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -45,5 +57,25 @@ namespace SwitchBack.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBarrios(int id, [FromBody] Barrios barrios)
+        {
+            //preguntar a duveimar como funciona
+            if (id != barrios.IdBarr) return BadRequest();
+            var result = await _repository.UpdateBarrios(barrios);
+            if (result) return NoContent();
+            return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBarrios(int id)
+        {
+            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
+            var result = await _repository.DeleteBarrios(id);
+            if (result) return NoContent();
+            return NotFound();
+        }
     }
+
 }

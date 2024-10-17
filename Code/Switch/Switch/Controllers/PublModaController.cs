@@ -26,14 +26,26 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetPublModaById(int id)
+        {
+            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
+            var publmoda = await _repository.GetPublModaById(id);
+            if (publmoda == null) return NotFound();
+            return Ok(publmoda);
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostPublModa([FromBody] PublModa publModa)
+        public async Task<IActionResult> PostPublModa([FromBody] PublModa publmoda)
         {
             try
             {
-                var response = await _repository.PostPublModa(publModa);
+                var response = await _repository.PostPublModa(publmoda);
                 if (response == true)
                     return Ok("Insertado correctamente");
                 else
@@ -48,11 +60,11 @@ namespace SwitchBack.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdatePublModa(int id, [FromBody] PublModa publModa)
+        public async Task<IActionResult> UpdatePublModa(int id, [FromBody] PublModa publmoda)
         {
             try
             {
-                var response = await _repository.UpdatePublModa(id, publModa);
+                var response = await _repository.UpdatePublModa(id, publmoda);
                 if (response)
                     return Ok("Actualizado correctamente");
                 else

@@ -19,6 +19,12 @@ namespace SwitchBack.Repositories
             return await _context.PublHabi.ToListAsync();
         }
 
+        public async Task<PublHabi> GetPublHabiById(int id)
+        {
+            var data = await _context.PublHabi.FindAsync(id);
+            return data;
+        }
+
         public async Task<bool> PostPublHabi(PublHabi publHabi)
         {
             //Preguntar al profe si de esta manera se puede acortar el codigo
