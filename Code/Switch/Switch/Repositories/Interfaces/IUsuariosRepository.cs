@@ -7,6 +7,7 @@ namespace SwitchBack.Repositories.Interfaces
     {
         Task<List<Usuarios>> GetUsuarios();
         Task<Usuarios> GetUsuarioById(int id);
+        Task<Usuarios> GetUsuarioByEmail(string email);
         Task<bool> PostUsuario(Usuarios usuario);
         Task<bool> UpdateUsuario(Usuarios usuario);
         Task<bool> DeleteUsuario(int id);

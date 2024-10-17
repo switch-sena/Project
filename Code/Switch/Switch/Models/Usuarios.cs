@@ -12,40 +12,42 @@ namespace SwitchBack.Models
 
         [Required]
         [MaxLength(100)]
-        public string NombreUsua { get; set; }
+       // [JsonIgnore] para swager---evitar llenar campos
+        public required string NombreUsua { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string ApellidoUsua { get; set; }
+        public required string ApellidoUsua { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public string GeneroUsua { get; set; }
+        public required string GeneroUsua { get; set; }
 
         [Required]
         public DateTime FechaNacimientoUsua { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public string CelularUsua { get; set; }
+        public required string CelularUsua { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string CorreoUsua { get; set; }
+        public required string CorreoUsua { get; set; }
 
         [Required]
-        public string ClaveUsua { get; set; }
+        public required string ClaveUsua { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string CorreoElectronicoUsua { get; set; }
+        public required string CorreoElectronicoUsua { get; set; }
 
-        public string LinksRsUsua { get; set; }
+        public required string LinksRsUsua { get; set; }
 
         public int CopiaIdBarr { get; set; }
 
         public DateTime CreacionFechaUsua { get; set; } = DateTime.Now;
-        public DateTime ModificacionFechaUsua { get; set; }
+        [JsonIgnore]
+        public DateTime? ModificacionFechaUsua { get; set; }
 
         // Propiedad de navegación
         [JsonIgnore]

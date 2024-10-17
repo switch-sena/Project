@@ -23,6 +23,11 @@ namespace SwitchBack.Repositories
             return await _context.Usuarios.FindAsync(id);
         }
 
+        public async Task<Usuarios> GetUsuarioByEmail(string email)
+        {
+            return await _context.Usuarios.Where(x => x.CorreoUsua == email).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> PostUsuario(Usuarios usuario)
         {
             _context.Usuarios.Add(usuario);
