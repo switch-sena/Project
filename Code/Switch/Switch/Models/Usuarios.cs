@@ -41,7 +41,7 @@ namespace SwitchBack.Models
         [MaxLength(100)]
         public required string CorreoElectronicoUsua { get; set; }
 
-        public required string LinksRsUsua { get; set; }
+        public string? LinksRsUsua { get; set; }
 
         public int CopiaIdBarr { get; set; }
 
