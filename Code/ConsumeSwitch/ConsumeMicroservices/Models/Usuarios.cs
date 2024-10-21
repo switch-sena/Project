@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Threading;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace ConsumeMicroservices.Models
 {
@@ -48,12 +49,12 @@ namespace ConsumeMicroservices.Models
         public DateTime ModificacionFechaUsua { get; set; }
 
         // Propiedad de navegación
-        [JsonIgnore]
+        //[JsonIgnore]
         [ForeignKey("CopiaIdBarr")]
-        public Barrios? Barrio { get; set; }
+        public Barrios Barrio { get; set; }
 
         [JsonIgnore]
-        public ICollection<Publicaciones>? Publicaciones { get; set; }
+        public ICollection<Publicaciones> Publicaciones { get; set; }
     }
 }
 

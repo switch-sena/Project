@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace ConsumeMicroservices.Models
 {
@@ -18,6 +17,6 @@ namespace ConsumeMicroservices.Models
 
         // Propiedad de navegación
         [JsonIgnore]
-        public ICollection<PublHabi>? PublHabi { get; set; }
+        public ICollection<PublHabi> PublHabi { get; set; }
     }
 }

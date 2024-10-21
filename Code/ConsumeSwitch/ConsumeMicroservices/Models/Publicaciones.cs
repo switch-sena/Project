@@ -2,7 +2,7 @@
 
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ConsumeMicroservices.Models
 {
@@ -20,10 +20,10 @@ namespace ConsumeMicroservices.Models
 
         // Relación con Usuarios
         [JsonIgnore]
-        public Usuarios? Usuarios { get; set; }
+        public Usuarios Usuarios { get; set; }
 
         // Propiedad de navegación
         [JsonIgnore]
-        public ICollection<PublModa>? PublModa { get; set; }
+        public ICollection<PublModa> PublModa { get; set; }
     }
 }

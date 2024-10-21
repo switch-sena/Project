@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace ConsumeMicroservices.Models
 {
@@ -15,6 +15,7 @@ namespace ConsumeMicroservices.Models
 
         // Propiedad de navegación
         [JsonIgnore]
-        public ICollection<Usuarios>? Usuarios { get; set; }
+        // preguntar al profe porque produce error con el "?"
+        public ICollection<Usuarios> Usuarios { get; set; }
     }
 }

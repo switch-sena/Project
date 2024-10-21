@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace ConsumeMicroservices.Models
 {
@@ -15,10 +15,10 @@ namespace ConsumeMicroservices.Models
 
         [JsonIgnore]
         [ForeignKey("CopiaIdPubl")]
-        public Publicaciones? Publicaciones { get; set; }
+        public Publicaciones Publicaciones { get; set; }
 
         [JsonIgnore]
         [ForeignKey("CopiaIdModa")]
-        public Modalidades? Modalidades { get; set; }
+        public Modalidades Modalidades { get; set; }
     }
 }

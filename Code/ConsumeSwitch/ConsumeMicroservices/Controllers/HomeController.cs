@@ -46,7 +46,7 @@ namespace ConsumeMicroservices.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(Usuarios model)
+        public async Task<ActionResult> Login(Login model)
         {
             string returnUrl = Url.Action("Index", "Home");
             Token token = new Token();
