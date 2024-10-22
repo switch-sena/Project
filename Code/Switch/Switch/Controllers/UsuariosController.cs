@@ -17,7 +17,7 @@ namespace SwitchBack.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("GetUsuarios")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetUsuarios()
