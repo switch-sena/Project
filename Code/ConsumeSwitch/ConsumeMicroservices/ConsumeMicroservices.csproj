@@ -167,7 +167,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BarriosController.cs" />
+    <Compile Include="Controllers\HabilidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModalidadesController.cs" />
+    <Compile Include="Controllers\PublHabiController.cs" />
+    <Compile Include="Controllers\PublicacionesController.cs" />
+    <Compile Include="Controllers\PublModaController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,7 +183,7 @@
     <Compile Include="Models\Habilidades.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Modalidades.cs" />
-    <Compile Include="Models\publHabi.cs" />
+    <Compile Include="Models\PublHabi.cs" />
     <Compile Include="Models\Publicaciones.cs" />
     <Compile Include="Models\PublModa.cs" />
     <Compile Include="Models\Token.cs" />
@@ -237,6 +244,12 @@
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Barrios\Index.cshtml" />
+    <Content Include="Views\Habilidades\Index.cshtml" />
+    <Content Include="Views\Modalidades\Index.cshtml" />
+    <Content Include="Views\PublHabi\Index.cshtml" />
+    <Content Include="Views\Publicaciones\Index.cshtml" />
+    <Content Include="Views\PublModa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace SwitchBack.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("GetHabilidades")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -39,7 +39,7 @@ namespace SwitchBack.Controllers
             return Ok(habilidad);
         }
 
-        [HttpPost]
+        [HttpPost("PostHabilidades")]
         public async Task<IActionResult> PostHabilidades([FromBody] Habilidades habilidad)
         {
             //preguntar a duveimar como funciona

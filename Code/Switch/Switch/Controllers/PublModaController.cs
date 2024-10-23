@@ -17,7 +17,7 @@ namespace SwitchBack.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("GetPublModa")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetPublModa()
@@ -38,7 +38,7 @@ namespace SwitchBack.Controllers
             return Ok(publmoda);
         }
 
-        [HttpPost]
+        [HttpPost("PostPublModa")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostPublModa([FromBody] PublModa publmoda)

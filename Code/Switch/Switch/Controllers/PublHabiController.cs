@@ -18,7 +18,7 @@ namespace SwitchBack.Controllers
         }
 
         // Obtener todos los PublHabi
-        [HttpGet]
+        [HttpGet("GetPublHabi")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetPublHabi()
@@ -40,7 +40,7 @@ namespace SwitchBack.Controllers
         }
 
         // Crear nuevo PublHabi
-        [HttpPost]
+        [HttpPost("PostPublHabi")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostPublHabi([FromBody] PublHabi publhabi)

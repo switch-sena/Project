@@ -17,7 +17,7 @@ namespace SwitchBack.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("GetModalidades")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -39,7 +39,7 @@ namespace SwitchBack.Controllers
             return Ok(modalidades);
         }
 
-        [HttpPost]
+        [HttpPost("PostModalidades")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostModalidades([FromBody] Modalidades modalidades)

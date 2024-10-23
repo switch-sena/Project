@@ -26,7 +26,7 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet( "{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetUsuarioById(int id)
@@ -39,7 +39,7 @@ namespace SwitchBack.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost]
+        [HttpPost("PostUsuario")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostUsuario([FromBody] Usuarios usuario)

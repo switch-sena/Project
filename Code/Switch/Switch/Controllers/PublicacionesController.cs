@@ -18,7 +18,7 @@ namespace SwitchBack.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet("GetPublicaciones")]
         public async Task<IActionResult> GetPublicaciones()
         {
             var response = await _repository.GetPublicaciones();
@@ -34,7 +34,7 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
-        [HttpPost]
+        [HttpPost("PostPublicacion")]
         public async Task<IActionResult> PostPublicacion([FromBody] Publicaciones publicacion)
         {
             var result = await _repository.PostPublicacion(publicacion);

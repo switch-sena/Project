@@ -43,7 +43,7 @@ namespace ConsumeMicroservices.Controllers
                 }
             }
 
-            return View();
+            return View(EmpInfo);
         }
 
         [HttpPost]
