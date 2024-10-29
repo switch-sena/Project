@@ -242,7 +242,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Barrios\Index.cshtml" />
     <Content Include="Views\Habilidades\Index.cshtml" />
@@ -250,6 +249,7 @@
     <Content Include="Views\PublHabi\Index.cshtml" />
     <Content Include="Views\Publicaciones\Index.cshtml" />
     <Content Include="Views\PublModa\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

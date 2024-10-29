@@ -72,16 +72,19 @@ namespace ConsumeMicroservices.Controllers
 
                     if (Res.IsSuccessStatusCode)
                     {
-
+                        return RedirectToAction("Index");
                     }
                 }
-
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
-                return View();
+                return View("Index", "Home");
             }
+        }
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }
