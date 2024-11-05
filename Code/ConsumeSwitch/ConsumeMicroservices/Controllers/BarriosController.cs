@@ -45,5 +45,46 @@ namespace ConsumeMicroservices.Controllers
 
             return View(EmpInfo);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(Barrios barrios)
+        {
+            try
+            {
+                string bearerToken = string.Empty;
+                if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+                {
+                    bearerToken = Session["BearerToken"] as string;
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(apiUrl);
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                    string json = JsonConvert.SerializeObject(barrios);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage Res = await client.PostAsync("api/Barrios/PostBarrios", content);
+
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View("Index", "Home");
+            }
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

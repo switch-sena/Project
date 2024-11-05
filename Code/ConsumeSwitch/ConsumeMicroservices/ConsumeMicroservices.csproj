@@ -250,6 +250,12 @@
     <Content Include="Views\Publicaciones\Index.cshtml" />
     <Content Include="Views\PublModa\Index.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Barrios\Create.cshtml" />
+    <Content Include="Views\Habilidades\Create.cshtml" />
+    <Content Include="Views\Modalidades\Create.cshtml" />
+    <Content Include="Views\PublHabi\Create.cshtml" />
+    <Content Include="Views\Publicaciones\Create.cshtml" />
+    <Content Include="Views\PublModa\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
