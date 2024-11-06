@@ -27,7 +27,7 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetBarriosById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -58,7 +58,7 @@ namespace SwitchBack.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateBarrios")]
         public async Task<IActionResult> UpdateBarrios(int id, [FromBody] Barrios barrios)
         {
             //preguntar a duveimar como funciona

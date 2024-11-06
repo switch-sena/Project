@@ -16,10 +16,42 @@ namespace ConsumeMicroservices.Controllers
     public class BarriosController : Controller
     {
         string apiUrl = ConfigurationManager.AppSettings["Api"].ToString();
+        string bearerToken = string.Empty;
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> Update(int id)
+        {
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            Barrios EmpInfo = new Barrios();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarriosById/" + id);
+                if (Res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    EmpInfo = JsonConvert.DeserializeObject<Barrios>(EmpResponse);
+                }
+            }
+            return View(EmpInfo);
+        }
 
         public async Task<ActionResult> Index()
         {
-            string bearerToken = string.Empty;
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
             {
                 bearerToken = Session["bearerToken"] as string;
@@ -82,9 +114,42 @@ namespace ConsumeMicroservices.Controllers
                 return View("Index", "Home");
             }
         }
-        public ActionResult Create()
+
+        [HttpPost]
+        public async Task<ActionResult> Update(Barrios barrios)
         {
-            return View();
+            try
+            {
+                string bearerToken = string.Empty;
+                if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+                {
+                    bearerToken = Session["BearerToken"] as string;
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(apiUrl);
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                    string json = JsonConvert.SerializeObject(barrios);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage Res = await client.PutAsync("api/Barrios/UpdateBarrios/" + barrios.IdBarr, content);
+
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View("Index", "Home");
+            }
         }
     }
 }
