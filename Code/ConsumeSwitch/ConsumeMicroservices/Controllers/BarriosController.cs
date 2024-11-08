@@ -23,8 +23,10 @@ namespace ConsumeMicroservices.Controllers
             return View();
         }
 
+        //GET 
         public async Task<ActionResult> Update(int id)
         {
+            //validacion de que existe el token de inicio
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
             {
                 bearerToken = Session["bearerToken"] as string;
@@ -34,6 +36,7 @@ namespace ConsumeMicroservices.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
+            //logica para traer la informacion de el barrio por id
             Barrios EmpInfo = new Barrios();
             using (var client = new HttpClient())
             {
@@ -115,6 +118,7 @@ namespace ConsumeMicroservices.Controllers
             }
         }
 
+        //POST
         [HttpPost]
         public async Task<ActionResult> Update(Barrios barrios)
         {
@@ -137,7 +141,7 @@ namespace ConsumeMicroservices.Controllers
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
                     string json = JsonConvert.SerializeObject(barrios);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    HttpResponseMessage Res = await client.PutAsync("api/Barrios/UpdateBarrios/" + barrios.IdBarr, content);
+                    HttpResponseMessage Res = await client.PutAsync($"api/Barrios/UpdateBarrios/{barrios.IdBarr}", content);
 
                     if (Res.IsSuccessStatusCode)
                     {
