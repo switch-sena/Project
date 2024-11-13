@@ -19,46 +19,74 @@ namespace SwitchBack.Controllers
         }
 
         [HttpGet("GetPublicaciones")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetPublicaciones()
         {
             var response = await _repository.GetPublicaciones();
             return Ok(response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetPublicacionById/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetPublicacionById(int id)
         {
+            if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
+
             var response = await _repository.GetPublicacionById(id);
-            if (response == null)
-                return NotFound();
+            if (response == null) return NotFound($"No se encontró la publicación con ID {id}.");
             return Ok(response);
         }
 
         [HttpPost("PostPublicacion")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostPublicacion([FromBody] Publicaciones publicacion)
         {
-            var result = await _repository.PostPublicacion(publicacion);
-            if (result)
-                return Ok("Publicación creada correctamente.");
-            return BadRequest("Error al crear la publicación.");
+            if (publicacion == null) return BadRequest("El objeto publicación no puede ser nulo.");
+
+            try
+            {
+                var result = await _repository.PostPublicacion(publicacion);
+                if (result)
+                {
+                    return CreatedAtAction(nameof(GetPublicacionById), new { id = publicacion.Id }, publicacion);
+                }
+                return BadRequest("Error al crear la publicación.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPublicacion(int id, [FromBody] Publicaciones publicacion)
+        [HttpPut("UpdatePublicacion/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdatePublicacion(int id, [FromBody] Publicaciones publicacion)
         {
-            var result = await _repository.PutPublicacion(id, publicacion);
-            if (result)
-                return Ok("Publicación actualizada correctamente.");
-            return BadRequest("Error al actualizar la publicación.");
+            if (publicacion == null) return BadRequest("El objeto publicación no puede ser nulo.");
+            if (id != publicacion.IdPubl) return BadRequest("El ID en la URL no coincide con el ID del objeto.");
+
+            var result = await _repository.UpdatePublicacion(id, publicacion);
+            if (result) return NoContent();
+            return NotFound($"No se encontró la publicación con ID {id}.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeletePublicacion/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeletePublicacion(int id)
         {
+            if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
+
             var result = await _repository.DeletePublicacion(id);
-            if (result)
-                return Ok("Publicación eliminada correctamente.");
-            return BadRequest("Error al eliminar la publicación.");
+            if (result) return NoContent();
+            return NotFound($"No se encontró la publicación con ID {id}.");
         }
     }
 }

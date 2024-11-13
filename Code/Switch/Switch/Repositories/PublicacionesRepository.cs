@@ -30,7 +30,7 @@ namespace SwitchBack.Repositories
             return await _context.SaveAsync();
         }
 
-        public async Task<bool> PutPublicacion(int id, Publicaciones publicacion)
+        public async Task<bool> UpdatePublicacion(int id, Publicaciones publicacion)
         {
             var existingPublicacion = await _context.Publicaciones.FindAsync(id);
             if (existingPublicacion == null) return false;

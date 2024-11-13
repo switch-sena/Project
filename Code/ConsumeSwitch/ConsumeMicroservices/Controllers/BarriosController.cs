@@ -18,6 +18,7 @@ namespace ConsumeMicroservices.Controllers
         string apiUrl = ConfigurationManager.AppSettings["Api"].ToString();
         string bearerToken = string.Empty;
 
+        //GET 
         public ActionResult Create()
         {
             return View();
@@ -53,6 +54,7 @@ namespace ConsumeMicroservices.Controllers
             return View(EmpInfo);
         }
 
+        //GET 
         public async Task<ActionResult> Index()
         {
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
@@ -124,7 +126,6 @@ namespace ConsumeMicroservices.Controllers
         {
             try
             {
-                string bearerToken = string.Empty;
                 if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
                 {
                     bearerToken = Session["BearerToken"] as string;

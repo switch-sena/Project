@@ -257,6 +257,8 @@
     <Content Include="Views\Publicaciones\Create.cshtml" />
     <Content Include="Views\PublModa\Create.cshtml" />
     <Content Include="Views\Barrios\Update.cshtml" />
+    <Content Include="Views\Habilidades\Update.cshtml" />
+    <Content Include="Views\Modalidades\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

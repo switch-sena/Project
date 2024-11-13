@@ -19,7 +19,6 @@ namespace SwitchBack.Controllers
 
         [HttpGet("GetHabilidades")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetHabilidades()
         {
@@ -27,44 +26,62 @@ namespace SwitchBack.Controllers
             return Ok(habilidades);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetHabilidadesById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetHabilidadesById(int id)
         {
-            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
+            if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
+
             var habilidad = await _repository.GetHabilidadesById(id);
-            if (habilidad == null) return NotFound();
+            if (habilidad == null) return NotFound($"No se encontró la habilidad con ID {id}.");
             return Ok(habilidad);
         }
 
         [HttpPost("PostHabilidades")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> PostHabilidades([FromBody] Habilidades habilidad)
         {
-            //preguntar a duveimar como funciona
+            if (habilidad == null) return BadRequest("El objeto habilidad no puede ser nulo.");
+
             var result = await _repository.PostHabilidades(habilidad);
-            if (result) return CreatedAtAction(nameof(GetHabilidades), new { id = habilidad.IdHabi }, habilidad);
-            return BadRequest();
+            if (result)
+            {
+                return CreatedAtAction(nameof(GetHabilidadesById), new { id = habilidad.IdHabi }, habilidad);
+            }
+            return BadRequest("Error al crear la habilidad.");
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateHabilidades/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> UpdateHabilidades(int id, [FromBody] Habilidades habilidad)
         {
-            //preguntar a duveimar como funciona
-            if (id != habilidad.IdHabi) return BadRequest();
+            if (habilidad == null) return BadRequest("El objeto habilidad no puede ser nulo.");
+            if (id != habilidad.IdHabi) return BadRequest("El ID en la URL no coincide con el ID del objeto.");
+
             var result = await _repository.UpdateHabilidades(habilidad);
             if (result) return NoContent();
-            return NotFound();
+            return NotFound($"No se encontró la habilidad con ID {id}.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteHabilidades/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> DeleteHabilidades(int id)
         {
-            //preguntar al profesor como se programan los response pero la parte del estado (200, 404,...)
+            if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
+
             var result = await _repository.DeleteHabilidades(id);
             if (result) return NoContent();
-            return NotFound();
+            return NotFound($"No se encontró la habilidad con ID {id}.");
         }
     }
 }

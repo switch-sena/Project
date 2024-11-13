@@ -16,7 +16,9 @@ namespace ConsumeMicroservices.Controllers
     public class HabilidadesController : Controller
     {
         string apiUrl = ConfigurationManager.AppSettings["Api"].ToString();
+        string bearerToken = string.Empty;
 
+        //GET 
         public async Task<ActionResult> Index()
         {
             string bearerToken = string.Empty;
@@ -45,6 +47,37 @@ namespace ConsumeMicroservices.Controllers
 
             return View(EmpInfo);
         }
+
+        //GET 
+        public async Task<ActionResult> Update(int id)
+        {
+            //validacion de que existe el token de inicio
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            //logica para traer la informacion de el barrio por id
+            Barrios EmpInfo = new Barrios();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.GetAsync("api/Habilidades/GetHabilidadesById/" + id);
+                if (Res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    EmpInfo = JsonConvert.DeserializeObject<Barrios>(EmpResponse);
+                }
+            }
+            return View(EmpInfo);
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> Create(Habilidades habilidades)
@@ -82,9 +115,41 @@ namespace ConsumeMicroservices.Controllers
                 return View("Index", "Home");
             }
         }
-        public ActionResult Create()
+        [HttpPost]
+        public async Task<ActionResult> Update(Habilidades habilidades)
         {
-            return View();
+            try
+            {
+                string bearerToken = string.Empty;
+                if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+                {
+                    bearerToken = Session["BearerToken"] as string;
+                }
+                else
+                {
+                    return RedirectToAction("Error", "Home");
+                }
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(apiUrl);
+                    client.DefaultRequestHeaders.Clear();
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                    string json = JsonConvert.SerializeObject(habilidades);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage Res = await client.PutAsync($"api/Habilidades/UpdateHabilidades/{habilidades.IdHabi}", content);
+
+                    if (Res.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View("Index", "Home");
+            }
         }
     }
 }
