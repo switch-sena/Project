@@ -6,9 +6,9 @@ namespace SwitchBack.Repositories.Interfaces
     public interface IPublicacionesRepository
     {
         Task<List<Publicaciones>> GetPublicaciones();
-        Task<Publicaciones> GetPublicacionById(int id);
-        Task<bool> PostPublicacion(Publicaciones publicacion);
-        Task<bool> UpdatePublicacion(int id, Publicaciones publicacion);
-        Task<bool> DeletePublicacion(int id);
+        Task<Publicaciones> GetPublicacionesById(int id);
+        Task<bool> PostPublicaciones(Publicaciones publicacion);
+        Task<bool> UpdatePublicaciones(int id, Publicaciones publicacion);
+        Task<bool> DeletePublicaciones(int id);
     }
 }

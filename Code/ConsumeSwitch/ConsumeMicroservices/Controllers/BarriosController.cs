@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +18,35 @@ namespace ConsumeMicroservices.Controllers
     {
         string apiUrl = ConfigurationManager.AppSettings["Api"].ToString();
         string bearerToken = string.Empty;
+
+        //GET 
+        public async Task<ActionResult> Index()
+        {
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            List<Barrios> EmpInfo = new List<Barrios>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
+                if (Res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    EmpInfo = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
+                }
+            }
+
+            return View(EmpInfo);
+        }
 
         //GET 
         public ActionResult Create()
@@ -55,8 +85,9 @@ namespace ConsumeMicroservices.Controllers
         }
 
         //GET 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Delete(int id)
         {
+            //validacion de que existe el token de inicio
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
             {
                 bearerToken = Session["bearerToken"] as string;
@@ -66,21 +97,20 @@ namespace ConsumeMicroservices.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            List<Barrios> EmpInfo = new List<Barrios>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-                HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
+                string json = JsonConvert.SerializeObject(id);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage Res = await client.PostAsync("api/Barrios/DeleteBarrios", content);
                 if (Res.IsSuccessStatusCode)
                 {
-                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-                    EmpInfo = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
+                    return RedirectToAction("Index");
                 }
             }
-
-            return View(EmpInfo);
+            return View("Error", "Home");
         }
 
         [HttpPost]
@@ -88,7 +118,6 @@ namespace ConsumeMicroservices.Controllers
         {
             try
             {
-                string bearerToken = string.Empty;
                 if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
                 {
                     bearerToken = Session["BearerToken"] as string;

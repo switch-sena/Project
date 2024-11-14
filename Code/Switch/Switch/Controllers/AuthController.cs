@@ -28,7 +28,7 @@ namespace SwitchBack.Controllers
                 return BadRequest("Invalid client request");
             }
 
-            var usuario = await _usuarioRepository.GetUsuarioByEmail(login.Email);
+            var usuario = await _usuarioRepository.GetUsuariosByEmail(login.Email);
             if (usuario == null)
                 return BadRequest();
 

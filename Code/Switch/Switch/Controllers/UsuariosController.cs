@@ -26,15 +26,15 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
-        [HttpGet("GetUsuarioById/{id}")]
+        [HttpGet("GetUsuariosById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetUsuarioById(int id)
+        public async Task<IActionResult> GetUsuariosById(int id)
         {
             if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
 
-            var usuario = await _repository.GetUsuarioById(id);
+            var usuario = await _repository.GetUsuariosById(id);
             if (usuario == null)
             {
                 return NotFound($"No se encontró el usuario con ID {id}.");
@@ -42,18 +42,18 @@ namespace SwitchBack.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost("PostUsuario")]
+        [HttpPost("PostUsuarios")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostUsuario([FromBody] Usuarios usuario)
+        public async Task<IActionResult> PostUsuarios([FromBody] Usuarios usuario)
         {
             if (usuario == null) return BadRequest("El objeto usuario no puede ser nulo.");
 
             try
             {
-                var created = await _repository.PostUsuario(usuario);
+                var created = await _repository.PostUsuarios(usuario);
                 if (created)
-                    return CreatedAtAction(nameof(GetUsuarioById), new { id = usuario.IdUsua }, usuario);
+                    return CreatedAtAction(nameof(GetUsuariosById), new { id = usuario.IdUsua }, usuario);
                 return BadRequest("Error al crear el usuario.");
             }
             catch (Exception ex)
@@ -62,30 +62,30 @@ namespace SwitchBack.Controllers
             }
         }
 
-        [HttpPut("UpdateUsuario/{id}")]
+        [HttpPut("UpdateUsuarios/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateUsuario(int id, [FromBody] Usuarios usuario)
+        public async Task<IActionResult> UpdateUsuarios(int id, [FromBody] Usuarios usuario)
         {
             if (usuario == null) return BadRequest("El objeto usuario no puede ser nulo.");
             if (id != usuario.IdUsua) return BadRequest("El ID en la URL no coincide con el ID del objeto.");
 
-            var updated = await _repository.UpdateUsuario(usuario);
+            var updated = await _repository.UpdateUsuarios(usuario);
             if (updated)
                 return NoContent();
 
             return NotFound($"No se encontró el usuario con ID {id}.");
         }
 
-        [HttpDelete("DeleteUsuario/{id}")]
+        [HttpDelete("DeleteUsuarios/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteUsuario(int id)
+        public async Task<IActionResult> DeleteUsuarios(int id)
         {
             if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
 
-            var deleted = await _repository.DeleteUsuario(id);
+            var deleted = await _repository.DeleteUsuarios(id);
             if (deleted)
                 return NoContent();
 

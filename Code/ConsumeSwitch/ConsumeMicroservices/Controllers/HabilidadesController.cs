@@ -21,7 +21,6 @@ namespace ConsumeMicroservices.Controllers
         //GET 
         public async Task<ActionResult> Index()
         {
-            string bearerToken = string.Empty;
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
             {
                 bearerToken = Session["bearerToken"] as string;
@@ -49,6 +48,12 @@ namespace ConsumeMicroservices.Controllers
         }
 
         //GET 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //GET 
         public async Task<ActionResult> Update(int id)
         {
             //validacion de que existe el token de inicio
@@ -62,7 +67,7 @@ namespace ConsumeMicroservices.Controllers
             }
 
             //logica para traer la informacion de el barrio por id
-            Barrios EmpInfo = new Barrios();
+            Habilidades EmpInfo = new Habilidades();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(apiUrl);
@@ -72,7 +77,7 @@ namespace ConsumeMicroservices.Controllers
                 if (Res.IsSuccessStatusCode)
                 {
                     var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-                    EmpInfo = JsonConvert.DeserializeObject<Barrios>(EmpResponse);
+                    EmpInfo = JsonConvert.DeserializeObject<Habilidades>(EmpResponse);
                 }
             }
             return View(EmpInfo);
@@ -84,7 +89,6 @@ namespace ConsumeMicroservices.Controllers
         {
             try
             {
-                string bearerToken = string.Empty;
                 if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
                 {
                     bearerToken = Session["BearerToken"] as string;
@@ -115,12 +119,12 @@ namespace ConsumeMicroservices.Controllers
                 return View("Index", "Home");
             }
         }
+
         [HttpPost]
         public async Task<ActionResult> Update(Habilidades habilidades)
         {
             try
             {
-                string bearerToken = string.Empty;
                 if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
                 {
                     bearerToken = Session["BearerToken"] as string;

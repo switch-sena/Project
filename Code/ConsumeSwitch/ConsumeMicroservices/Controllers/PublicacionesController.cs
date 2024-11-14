@@ -32,7 +32,7 @@ namespace ConsumeMicroservices.Controllers
             }
 
             //logica para traer la informacion de el barrio por id
-            Barrios EmpInfo = new Barrios();
+            Publicaciones EmpInfo = new Publicaciones();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(apiUrl);
@@ -42,7 +42,7 @@ namespace ConsumeMicroservices.Controllers
                 if (Res.IsSuccessStatusCode)
                 {
                     var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-                    EmpInfo = JsonConvert.DeserializeObject<Barrios>(EmpResponse);
+                    EmpInfo = JsonConvert.DeserializeObject<Publicaciones>(EmpResponse);
                 }
             }
             return View(EmpInfo);
@@ -102,7 +102,7 @@ namespace ConsumeMicroservices.Controllers
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
                     string json = JsonConvert.SerializeObject(publicaciones);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    HttpResponseMessage Res = await client.PostAsync("api/Publicaciones/PostPublicacion", content);
+                    HttpResponseMessage Res = await client.PostAsync("api/Publicaciones/PostPublicaciones", content);
 
                     if (Res.IsSuccessStatusCode)
                     {
@@ -123,7 +123,6 @@ namespace ConsumeMicroservices.Controllers
         {
             try
             {
-                string bearerToken = string.Empty;
                 if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
                 {
                     bearerToken = Session["BearerToken"] as string;

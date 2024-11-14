@@ -259,6 +259,10 @@
     <Content Include="Views\Barrios\Update.cshtml" />
     <Content Include="Views\Habilidades\Update.cshtml" />
     <Content Include="Views\Modalidades\Update.cshtml" />
+    <Content Include="Views\PublHabi\Update.cshtml" />
+    <Content Include="Views\Publicaciones\Update.cshtml" />
+    <Content Include="Views\PublModa\Update.cshtml" />
+    <Content Include="Views\Usuarios\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

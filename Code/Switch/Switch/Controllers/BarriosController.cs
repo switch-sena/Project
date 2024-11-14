@@ -76,7 +76,7 @@ namespace SwitchBack.Controllers
             return NotFound($"No se encontró el barrio con ID {id}.");
         }
 
-        [HttpDelete("DeleteBarrios/{id}")]
+        [HttpDelete("DeleteBarrios")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

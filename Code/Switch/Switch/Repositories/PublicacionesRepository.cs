@@ -19,18 +19,18 @@ namespace SwitchBack.Repositories
             return await _context.Publicaciones.ToListAsync();
         }
 
-        public async Task<Publicaciones> GetPublicacionById(int id)
+        public async Task<Publicaciones> GetPublicacionesById(int id)
         {
             return await _context.Publicaciones.FindAsync(id);
         }
 
-        public async Task<bool> PostPublicacion(Publicaciones publicacion)
+        public async Task<bool> PostPublicaciones(Publicaciones publicacion)
         {
             _context.Publicaciones.Add(publicacion);
             return await _context.SaveAsync();
         }
 
-        public async Task<bool> UpdatePublicacion(int id, Publicaciones publicacion)
+        public async Task<bool> UpdatePublicaciones(int id, Publicaciones publicacion)
         {
             var existingPublicacion = await _context.Publicaciones.FindAsync(id);
             if (existingPublicacion == null) return false;
@@ -42,7 +42,7 @@ namespace SwitchBack.Repositories
             return await _context.SaveAsync();
         }
 
-        public async Task<bool> DeletePublicacion(int id)
+        public async Task<bool> DeletePublicaciones(int id)
         {
             var publicacion = await _context.Publicaciones.FindAsync(id);
             if (publicacion == null) return false;
