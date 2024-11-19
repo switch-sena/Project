@@ -102,9 +102,7 @@ namespace ConsumeMicroservices.Controllers
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-                string json = JsonConvert.SerializeObject(id);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage Res = await client.PostAsync("api/Barrios/DeleteBarrios", content);
+                HttpResponseMessage Res = await client.DeleteAsync("api/Barrios/DeleteBarrios/" + id);
                 if (Res.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
