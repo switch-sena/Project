@@ -212,6 +212,7 @@
     <Content Include="Content\Inicio\Publicacion.css" />
     <Content Include="Content\Inicio\style registro.css" />
     <Content Include="Content\style.css" />
+    <Content Include="img\logo.png" />
     <Content Include="img\persona1.jpg" />
     <Content Include="img\persona2.jpg" />
     <Content Include="img\persona3.jpg" />
