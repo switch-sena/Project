@@ -25,5 +25,7 @@ namespace ConsumeMicroservices.Models
         // Propiedad de navegación
         [JsonIgnore]
         public ICollection<PublModa> PublModa { get; set; }
+        [JsonIgnore]
+        public ICollection<PublHabi>? PublHabi { get; set; }
     }
 }

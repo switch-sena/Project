@@ -19,9 +19,44 @@ namespace SwitchBack.Repositories
             return await _context.Publicaciones.ToListAsync();
         }
 
+        public async Task<List<Publicaciones>> GetPublicacionesInfoComp()
+        {
+            return await _context.Publicaciones
+            .Include(p => p.Usuarios)
+            .Include(p => p.PublModa).ThenInclude(pm => pm.Modalidades)
+            .Include(p => p.PublHabi).ThenInclude(ph => ph.Habilidades)
+            .Select(p => new Publicaciones
+            {
+                IdPubl = p.IdPubl,
+                TituloPubl = p.TituloPubl,
+                NombreUsua = p.Usuarios.NombreUsua,
+                NombreModa = p.PublModa.Modalidades.NombreModa,
+                NombreHabi = p.PublHabi.Habilidades.NombreHabi
+            })
+            .ToListAsync();
+        }
+
         public async Task<Publicaciones> GetPublicacionesById(int id)
         {
             return await _context.Publicaciones.FindAsync(id);
+        }
+
+        public async Task<Publicaciones> GetPublicacionesInfoCompById(int id)
+        {
+            return await _context.Publicaciones
+            .Where(p => p.IdPubl == id)
+            .Include(p => p.Usuarios)
+            .Include(p => p.PublModa).ThenInclude(pm => pm.Modalidades)
+            .Include(p => p.PublHabi).ThenInclude(ph => ph.Habilidades)
+            .Select(p => new Publicaciones
+            {
+                IdPubl = p.IdPubl,
+                TituloPubl = p.TituloPubl,
+                NombreUsua = p.Usuarios.NombreUsua,
+                NombreModa = p.PublModa.Select(pm => pm.Modalidades.NombreModa).FirstOrDefault(),
+                NombreHabi = p.PublHabi.Select(ph => ph.Habilidades.NombreHabi).FirstOrDefault()
+            })
+            .FirstOrDefaultAsync();
         }
 
         public async Task<bool> PostPublicaciones(Publicaciones publicacion)

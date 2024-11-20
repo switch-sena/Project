@@ -84,6 +84,33 @@ namespace ConsumeMicroservices.Controllers
             return View(EmpInfo);
         }
 
+        //GET 
+        public async Task<ActionResult> Delete(int id)
+        {
+            //validacion de que existe el token de inicio
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.DeleteAsync("api/PublHabi/DeletePublHabi/" + id);
+                if (Res.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return View("Error", "Home");
+        }
+
         [HttpPost]
         public async Task<ActionResult> Create(PublHabi publHabi)
         {
@@ -156,5 +183,6 @@ namespace ConsumeMicroservices.Controllers
                 return View("Index", "Home");
             }
         }
+
     }
 }

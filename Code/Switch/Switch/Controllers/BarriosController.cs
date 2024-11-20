@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SwitchBack.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BarriosController : ControllerBase
