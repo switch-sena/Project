@@ -86,9 +86,7 @@ namespace SwitchBack.Controllers
             if (id <= 0) return BadRequest("El ID debe ser mayor que cero.");
 
             var deleted = await _repository.DeleteUsuarios(id);
-            if (deleted)
-                return NoContent();
-
+            if (deleted) return NoContent();
             return NotFound($"No se encontró el usuario con ID {id}.");
         }
     }
