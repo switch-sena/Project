@@ -39,7 +39,11 @@
                                 }
                                 else
                                 {
-                                    @Html.Action("LoginPartial", "Home")
+                                    <li class="nav-item dropdown">
+                                        <ul class="dropdown-menu dropdown-menu-end" style="width: 300px !important;">
+                                            @Html.Action("LoginPartial", "Home")
+                                        </ul>
+                                    </li>
                                 }
                             }
                         </ul>
@@ -48,8 +52,6 @@
             </div>
         </div>
     </nav>
-    @section scripts{
-    }
     <div class="container body-content">
         @RenderBody()
         <hr />

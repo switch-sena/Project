@@ -22,14 +22,14 @@ namespace ConsumeMicroservices.Controllers
         //GET 
         public async Task<ActionResult> Index()
         {
-            //if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
-            //{
-            //    bearerToken = Session["bearerToken"] as string;
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Error", "Home");
-            //}
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
 
             List<Barrios> EmpInfo = new List<Barrios>();
             using (var client = new HttpClient())

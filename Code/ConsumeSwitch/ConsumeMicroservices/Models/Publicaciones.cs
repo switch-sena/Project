@@ -26,6 +26,6 @@ namespace ConsumeMicroservices.Models
         [JsonIgnore]
         public ICollection<PublModa> PublModa { get; set; }
         [JsonIgnore]
-        public ICollection<PublHabi>? PublHabi { get; set; }
+        public ICollection<PublHabi> PublHabi { get; set; }
     }
 }
