@@ -213,7 +213,10 @@
     <Content Include="Content\Inicio\Perfil1.css" />
     <Content Include="Content\Inicio\Publicacion.css" />
     <Content Include="Content\Inicio\style registro.css" />
+    <Content Include="Content\Registrousuario.css" />
     <Content Include="Content\style.css" />
+    <Content Include="img\background.jpg" />
+    <Content Include="img\desk.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\persona1.jpg" />
     <Content Include="img\persona2.jpg" />
@@ -254,6 +257,7 @@
     <Content Include="img\navbar-logo.svg" />
     <Content Include="img\personacantando.jpg" />
     <Content Include="img\piano.jpg" />
+    <Content Include="img\registro.jpg" />
     <Content Include="img\santiago.jpg" />
     <Content Include="img\tejer.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />

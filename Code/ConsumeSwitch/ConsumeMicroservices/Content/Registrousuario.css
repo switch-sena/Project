@@ -1,0 +1,53 @@
+html {
+    background: url("/img/background.jpg") no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+body {
+    background-color: transparent;
+}
+
+#registration-form {
+    max-width: 600px; /* Reducir el ancho del formulario */
+    margin: 150px auto; /* Centrar el formulario en el medio de la pantalla */
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px; /* Opcional: para redondear las esquinas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: para agregar una sombra */
+}
+
+#registration-form h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#registration-form .form-control {
+    width: 100%; /* Asegurarse de que los inputs ocupen el 100% del ancho del contenedor */
+    padding: 12px 20px;
+    height: auto;
+    margin-bottom: 15px; /* Espaciado entre los campos */
+}
+
+#registration-form .btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    #registration-form {
+        width: 90%; /* Ajustar el tamaño del formulario en pantallas pequeñas */
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #registration-form h1 {
+        font-size: 1.5em; /* Reducir el tamaño del texto en pantallas pequeñas */
+    }
+
+    #registration-form .btn {
+        width: auto; /* Establece el ancho del botón según su contenido */
+        margin-top: 20px;
+        padding: 10px 10px; /* Ajusta el padding para que el botón no sea tan grande */
+    }
