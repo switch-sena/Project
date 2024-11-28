@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Switch</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -32,21 +32,21 @@
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                             </svg>
                         </a>
-                        <ul class="dropdown-menu">
-                            @{ if (User.Identity.IsAuthenticated)
+                        <!--<ul class="dropdown-menu">
+                            @* if (User.Identity.IsAuthenticated)
                                 {
 
                                 }
                                 else
-                                {
-                                    <li class="nav-item dropdown">
-                                        <ul class="dropdown-menu dropdown-menu-end" style="width: 300px !important;">
-                                            @Html.Action("LoginPartial", "Home")
-                                        </ul>
-                                    </li>
-                                }
+                                {-->
+                                    @*<li class="nav-item dropdown">
+                                        <ul class="dropdown-menu dropdown-menu-end" style="width: 300px !important;">*@
+                                            <!--@*Html.Action("LoginPartial", "Home")-->
+                                        @*</ul>
+                                    </li>*@
+                                <!--}
                             }
-                        </ul>
+                        </ul>-->
                     </li>
                 </ul>
             </div>

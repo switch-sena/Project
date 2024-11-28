@@ -13,5 +13,6 @@ namespace ConsumeMicroservices.Models
         public string NombreUsuario { get; set; }
         public List<string> Habilidades { get; set; }
         public List<string> Modalidades { get; set; }
+
     }
 }

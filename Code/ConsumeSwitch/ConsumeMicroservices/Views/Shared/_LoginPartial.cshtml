@@ -4,15 +4,17 @@
     @Html.AntiForgeryToken()
 
     <div class="mb-3">
-        @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+        @Html.LabelFor(m => m.Email, "Correo", new { @class = "form-label" })
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "correo@ejemplo.com" })
         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
     </div>
+
     <div class="mb-3">
-        @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+        @Html.LabelFor(m => m.Password, "Contraseña", new { @class = "form-label" })
         @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @placeholder = "Contraseña" })
         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
     </div>
+
     <br />
     <button type="submit" class="btn btn-info">Iniciar Sesión</button>
 </form>

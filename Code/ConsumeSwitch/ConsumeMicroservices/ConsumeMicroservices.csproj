@@ -193,6 +193,26 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\fontawesome.css" />
+    <Content Include="assets\css\fontawesome.min.css" />
+    <Content Include="assets\css\slick-theme.css" />
+    <Content Include="assets\css\slick-theme.min.css" />
+    <Content Include="assets\css\slick.min.css" />
+    <Content Include="assets\css\templatemo.css" />
+    <Content Include="assets\css\templatemo.min.css" />
+    <Content Include="assets\js\bootstrap.bundle.min.js" />
+    <Content Include="assets\js\custom.js" />
+    <Content Include="assets\js\jquery-1.11.0.min.js" />
+    <Content Include="assets\js\jquery-migrate-1.2.1.min.js" />
+    <Content Include="assets\js\slick.min.js" />
+    <Content Include="assets\js\templatemo.js" />
+    <Content Include="assets\js\templatemo.min.js" />
+    <Content Include="assets\webfonts\fa-brands-400.svg" />
+    <Content Include="assets\webfonts\fa-regular-400.svg" />
+    <Content Include="assets\webfonts\fa-solid-900.svg" />
+    <Content Include="assets\webfonts\slick.svg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -259,6 +279,7 @@
     <Content Include="img\piano.jpg" />
     <Content Include="img\registro.jpg" />
     <Content Include="img\santiago.jpg" />
+    <Content Include="img\shop_01.jpg" />
     <Content Include="img\tejer.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -288,6 +309,21 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="assets\webfonts\fa-brands-400.eot" />
+    <Content Include="assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="assets\webfonts\fa-brands-400.woff" />
+    <Content Include="assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="assets\webfonts\fa-regular-400.eot" />
+    <Content Include="assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="assets\webfonts\fa-regular-400.woff" />
+    <Content Include="assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="assets\webfonts\fa-solid-900.eot" />
+    <Content Include="assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="assets\webfonts\fa-solid-900.woff" />
+    <Content Include="assets\webfonts\fa-solid-900.woff2" />
+    <Content Include="assets\webfonts\slick.eot" />
+    <Content Include="assets\webfonts\slick.ttf" />
+    <Content Include="assets\webfonts\slick.woff" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -337,6 +373,7 @@
     <Content Include="Views\PublModa\Update.cshtml" />
     <Content Include="Views\Usuarios\Update.cshtml" />
     <Content Include="Views\PublicacionesDTO\Index.cshtml" />
+    <Content Include="Views\PublicacionesDTO\Completa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -45,6 +45,9 @@ namespace ConsumeMicroservices.Controllers
 
             return View(EmpInfo);
         }
-
+        public async Task<ActionResult> Completa()
+        {
+            return View();
+        }
     }
 }
