@@ -46,7 +46,7 @@ namespace ConsumeMicroservices.Models
         public int CopiaIdBarr { get; set; }
 
         public DateTime CreacionFechaUsua { get; set; } = DateTime.Now;
-        public DateTime ModificacionFechaUsua { get; set; }
+        public DateTime? ModificacionFechaUsua { get; set; }
 
         // Propiedad de navegación
         //[JsonIgnore]

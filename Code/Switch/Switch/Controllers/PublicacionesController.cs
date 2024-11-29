@@ -1,8 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SwitchBack.Models;
 using SwitchBack.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using SwitchBack.Repositories;
 
 namespace SwitchBack.Controllers
 {
@@ -87,6 +87,26 @@ namespace SwitchBack.Controllers
             }
         }
 
+        [HttpPost("PostPublicacionesDTO")]
+        public async Task<IActionResult> PostPublicacionesDTO([FromBody] PublicacionesDTO publicacionDTO)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var result = await _repository.PostPublicacionesDTO(publicacionDTO);
+                if (result)
+                    return Ok(new { message = "Publicación creada exitosamente." });
+
+                return StatusCode(500, new { message = "Error al crear la publicación." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Ocurrió un error interno.", error = ex.Message });
+            }
+        }
+
         [HttpPut("UpdatePublicaciones/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -101,6 +121,19 @@ namespace SwitchBack.Controllers
             return NotFound($"No se encontró la publicación con ID {id}.");
         }
 
+        [HttpPut("UpdatePublicacionesDTO/{id}")]
+        public async Task<IActionResult> UpdatePublicacionesDTO(int id, [FromBody] PublicacionesDTO publicaciones)
+        {
+            if (id != publicaciones.IdPubl)
+                return BadRequest("El ID de la publicación no coincide con el parámetro.");
+
+            var result = await _repository.UpdatePublicacionesDTO(publicaciones);
+            if (!result)
+                return NotFound("Publicación no encontrada o no se pudo actualizar.");
+
+            return NoContent();
+        }
+
         [HttpDelete("DeletePublicaciones/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -111,6 +144,19 @@ namespace SwitchBack.Controllers
             var result = await _repository.DeletePublicaciones(id);
             if (result) return NoContent();
             return NotFound($"No se encontró la publicación con ID {id}.");
+        }
+
+        [HttpDelete("DeletePublicacionesDTO/{id}")]
+        public async Task<IActionResult> DeletePublicacionesDTO(int id)
+        {
+            var resultado = await _repository.DeletePublicacionesDTO(id);
+
+            if (!resultado)
+            {
+                return NotFound(new { mensaje = "La publicación no existe o ya fue eliminada." });
+            }
+
+            return Ok(new { mensaje = "La publicación y sus relaciones fueron eliminadas correctamente." });
         }
     }
 }

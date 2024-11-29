@@ -18,6 +18,27 @@ namespace SwitchBack.Repositories
             return await _context.Usuarios.ToListAsync();
         }
 
+        public async Task<List<UsuariosDTO>> GetUsuariosDTO()
+        {
+            return await _context.Usuarios.Include(p => p.Barrio).
+                Select(p => new UsuariosDTO
+                {
+                    IdUsua = p.IdUsua,
+                    NombreUsua = p.NombreUsua,
+                    ApellidoUsua = p.ApellidoUsua,
+                    GeneroUsua = p.GeneroUsua,
+                    FechaNacimientoUsua = p.FechaNacimientoUsua,
+                    CelularUsua = p.CelularUsua,
+                    CorreoUsua = p.CorreoUsua,
+                    ClaveUsua = p.ClaveUsua,
+                    CorreoElectronicoUsua = p.CorreoElectronicoUsua,
+                    LinksRsUsua = p.LinksRsUsua,
+                    Barrios = p.Barrio.NombreBarr,
+                    IdBarr = p.Barrio.IdBarr
+                })
+                .ToListAsync();
+        }
+
         public async Task<Usuarios> GetUsuariosById(int id)
         {
             return await _context.Usuarios.FindAsync(id);
@@ -32,6 +53,28 @@ namespace SwitchBack.Repositories
         {
             _context.Usuarios.Add(usuario);
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> PostUsuariosDTO(UsuariosDTO usuarioDTO)
+        {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            try
+            {
+                var usuarios = new Usuarios
+                {
+                    IdUsua = usuarioDTO.IdUsua,
+                    NombreUsua = usuarioDTO.NombreUsua,
+                    ApellidoUsua = usuarioDTO.ApellidoUsua,
+                    GeneroUsua = usuarioDTO.GeneroUsua,
+                    FechaNacimientoUsua = usuarioDTO.FechaNacimientoUsua,
+                    CelularUsua = usuarioDTO.CelularUsua,
+                    CorreoUsua = usuarioDTO.CorreoUsua,
+                    ClaveUsua = usuarioDTO.ClaveUsua,
+                    CorreoElectronicoUsua = usuarioDTO.CorreoElectronicoUsua,
+                    LinksRsUsua = usuarioDTO.LinksRsUsua,
+                    CopiaIdBarr = usuarioDTO.IdBarr
+                };
+            }
         }
 
         public async Task<bool> UpdateUsuarios(Usuarios usuario)

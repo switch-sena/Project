@@ -45,9 +45,34 @@ namespace ConsumeMicroservices.Controllers
 
             return View(EmpInfo);
         }
+
+        //GET
         public async Task<ActionResult> Completa()
         {
-            return View();
+
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            List<PublicacionesDTO> EmpInfo = new List<PublicacionesDTO>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.GetAsync("api/Publicaciones/GetPublicacionesInfoComp");
+                if (Res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    EmpInfo = JsonConvert.DeserializeObject<List<PublicacionesDTO>>(EmpResponse);
+                }
+            }
+            return View(EmpInfo);
         }
     }
 }
