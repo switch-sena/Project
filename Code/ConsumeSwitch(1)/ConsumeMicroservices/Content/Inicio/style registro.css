@@ -1,0 +1,11 @@
+body {
+    background-image: url('../../img/imagen_de_registro.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#contenedor-formulario {
+    background: #00ff90;
+    border-radius: 5px;
+    backdrop-filter: blur(1px);
+}
