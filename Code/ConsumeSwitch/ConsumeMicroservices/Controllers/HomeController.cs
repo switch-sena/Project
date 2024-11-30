@@ -53,7 +53,7 @@ namespace ConsumeMicroservices.Controllers
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "PublicacionesDTO");
             }
 
             using (var client = new HttpClient())
@@ -72,7 +72,7 @@ namespace ConsumeMicroservices.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "PublicacionesDTO");
         }
     }
 }
