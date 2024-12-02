@@ -20,14 +20,14 @@ namespace ConsumeMicroservices.Controllers
 
         //GET 
         public async Task<ActionResult> Index()
-        { 
+        {
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
             {
                 bearerToken = Session["bearerToken"] as string;
             }
             else
             {
-                return RedirectToAction("Error","Home");
+                return RedirectToAction("Error", "Home");
             }
 
             List<Usuarios> EmpInfo = new List<Usuarios>();
@@ -37,7 +37,7 @@ namespace ConsumeMicroservices.Controllers
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
                 HttpResponseMessage Res = await client.GetAsync("api/Usuarios/GetUsuarios");
-                if (Res.IsSuccessStatusCode) 
+                if (Res.IsSuccessStatusCode)
                 {
                     var EmpResponse = Res.Content.ReadAsStringAsync().Result;
                     EmpInfo = JsonConvert.DeserializeObject<List<Usuarios>>(EmpResponse);
@@ -48,8 +48,23 @@ namespace ConsumeMicroservices.Controllers
         }
 
         //GET 
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            //List<Barrios> EmpInfo = new List<Barrios>();
+            //using (var client = new HttpClient())
+            //{
+            //    client.BaseAddress = new Uri(apiUrl);
+            //    client.DefaultRequestHeaders.Clear();
+            //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+            //    HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
+            //    if (Res.IsSuccessStatusCode)
+            //    {
+            //        var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+            //        EmpInfo = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
+            //    }
+            //}
+
+            //return View(EmpInfo);
             return View();
         }
 
@@ -111,7 +126,7 @@ namespace ConsumeMicroservices.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Usuarios usuarios)
+        public async Task<ActionResult> Create(UsuariosDTO usuarios)
         {
             try
             {
@@ -131,11 +146,11 @@ namespace ConsumeMicroservices.Controllers
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
                     string json = JsonConvert.SerializeObject(usuarios);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    HttpResponseMessage Res = await client.PostAsync("api/Usuarios/PostUsuario", content);
+                    HttpResponseMessage Res = await client.PostAsync("api/Usuarios/PostUsuariosDTO", content);
 
                     if (Res.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 return RedirectToAction("Index", "Home");

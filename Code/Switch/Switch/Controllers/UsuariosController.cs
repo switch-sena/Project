@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SwitchBack.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase
@@ -88,6 +88,7 @@ namespace SwitchBack.Controllers
         }
 
         [HttpPost("PostUsuariosDTO")]
+        [AllowAnonymous] // Permitir acceso sin autenticación
         public async Task<IActionResult> PostUsuariosDTO([FromBody] UsuariosDTO Usuario)
         {
             if (!ModelState.IsValid)

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SwitchBack.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BarriosController : ControllerBase
@@ -18,6 +18,7 @@ namespace SwitchBack.Controllers
         }
 
         [HttpGet("GetBarrios")]
+        [AllowAnonymous] // Permitir acceso sin autenticación
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> GetBarrios()

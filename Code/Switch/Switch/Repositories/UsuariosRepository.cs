@@ -33,7 +33,7 @@ namespace SwitchBack.Repositories
                     ClaveUsua = p.ClaveUsua,
                     CorreoElectronicoUsua = p.CorreoElectronicoUsua,
                     LinksRsUsua = p.LinksRsUsua,
-                    Barrios = p.Barrio.NombreBarr,
+                    NombreBarr = p.Barrio.NombreBarr,
                     IdBarr = p.Barrio.IdBarr
                 })
                 .ToListAsync();
@@ -56,7 +56,7 @@ namespace SwitchBack.Repositories
                     ClaveUsua = p.ClaveUsua,
                     CorreoElectronicoUsua = p.CorreoElectronicoUsua,
                     LinksRsUsua = p.LinksRsUsua,
-                    Barrios = p.Barrio.NombreBarr,
+                    NombreBarr = p.Barrio.NombreBarr,
                     IdBarr = p.Barrio.IdBarr
                 }).FirstAsync();
         }
