@@ -194,6 +194,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\Admin.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\fontawesome.css" />
@@ -278,6 +279,7 @@
     <Content Include="img\navbar-logo.svg" />
     <Content Include="img\personacantando.jpg" />
     <Content Include="img\piano.jpg" />
+    <Content Include="img\red-en-la-nube.png" />
     <Content Include="img\registro.jpg" />
     <Content Include="img\santiago.jpg" />
     <Content Include="img\shop_01.jpg" />
