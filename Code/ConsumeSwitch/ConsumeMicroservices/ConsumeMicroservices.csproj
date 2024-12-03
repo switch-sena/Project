@@ -194,6 +194,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\Admin.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\fontawesome.css" />
@@ -238,6 +239,8 @@
     <Content Include="Content\style.css" />
     <Content Include="img\background.jpg" />
     <Content Include="img\desk.jpg" />
+    <Content Include="img\Duveimar.jpeg" />
+    <Content Include="img\Julian.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\persona1.jpg" />
     <Content Include="img\persona2.jpg" />
@@ -248,7 +251,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\ambos.jpg" />
     <Content Include="img\barista.jpg" />
     <Content Include="img\close-icon.svg" />
     <Content Include="img\codificar.jpg" />
@@ -267,7 +269,6 @@
     <Content Include="img\imagen_de_registro.jpg" />
     <Content Include="img\imagen_de_registro.png" />
     <Content Include="img\ingles.jpg" />
-    <Content Include="img\Julian.jpg" />
     <Content Include="img\linea1.jpg" />
     <Content Include="img\linea2.jpeg" />
     <Content Include="img\linea3.jpeg" />
@@ -278,6 +279,7 @@
     <Content Include="img\navbar-logo.svg" />
     <Content Include="img\personacantando.jpg" />
     <Content Include="img\piano.jpg" />
+    <Content Include="img\red-en-la-nube.png" />
     <Content Include="img\registro.jpg" />
     <Content Include="img\santiago.jpg" />
     <Content Include="img\shop_01.jpg" />
