@@ -50,21 +50,21 @@ namespace ConsumeMicroservices.Controllers
         //GET 
         public async Task<ActionResult> Create()
         {
-            List<Barrios> barriosList = new List<Barrios>();
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(apiUrl);
-                client.DefaultRequestHeaders.Clear();
-                
-                HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
-                if (Res.IsSuccessStatusCode)
-                {
-                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-                    barriosList = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
-                }
-            }
+            //List<Barrios> barriosList = new List<Barrios>();
+            //using (var client = new HttpClient())
+            //{
+            //    client.BaseAddress = new Uri(apiUrl);
+            //    client.DefaultRequestHeaders.Clear();
 
-            ViewBag.NombreBarr = new SelectList(barriosList, "IdBarr", "NombreBarr");
+            //    HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
+            //    if (Res.IsSuccessStatusCode)
+            //    {
+            //        var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+            //        barriosList = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
+            //    }
+            //}
+
+            ViewBag.NombreBarr = new SelectList(/*barriosList,*/ "IdBarr", "NombreBarr");
             return View();
         }
 
@@ -211,14 +211,14 @@ namespace ConsumeMicroservices.Controllers
 
                     if (Res.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Perfil");
                     }
                 }
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Error", "Home");
             }
             catch
             {
-                return View("Index", "Home");
+                return View("Error", "Home");
             }
         }
 

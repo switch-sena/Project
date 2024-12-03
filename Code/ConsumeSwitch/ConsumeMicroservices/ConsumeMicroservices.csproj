@@ -373,7 +373,6 @@
     <Content Include="Views\PublHabi\Update.cshtml" />
     <Content Include="Views\Publicaciones\Update.cshtml" />
     <Content Include="Views\PublModa\Update.cshtml" />
-    <Content Include="Views\Usuarios\Update.cshtml" />
     <Content Include="Views\PublicacionesDTO\Index.cshtml" />
     <Content Include="Views\PublicacionesDTO\Completa.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
