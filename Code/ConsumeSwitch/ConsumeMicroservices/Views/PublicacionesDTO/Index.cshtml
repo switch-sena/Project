@@ -23,30 +23,23 @@
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
                             <li>
-                                @Html.ActionLink(
-                                    "PublicacionesDTO",
-                                    "Contact",
-                                    "Home",
-                                    new { id = item.IdPubl },
-                                    new { @class = "btn btn-info text-white mt-2 far fa-eye" })
+                                <a href="@Url.Action("Completa", new { id = item.IdPubl })"
+                                   class="btn btn-info text-white mt-2 far fa-eye"></a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-body">
                     <!-- Titulo de la publicación -->
-                    <a href="@Url.Action("ShopSingle", "Home", new { id = item.IdPubl })" class="h3 text-decoration-none">@Html.DisplayFor(modelItem => item.TituloPubl)</a>
+                    <p class="h3 text-decoration-none">@Html.DisplayFor(modelItem => item.TituloPubl)</p>
 
                     <!-- Descripción de la publicación -->
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Habilidades)</p>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.Modalidades)</p>
 
                     <p class="card-text"><strong>@Html.DisplayFor(modelItem => item.NombreUsuario)</strong></p>
-
-                    <!-- Acciones (Editar, Detalles, Eliminar) -->
                 </div>
             </div>
         </div>
     }
 </div>
-<!-- End Content -->

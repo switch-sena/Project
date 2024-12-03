@@ -50,6 +50,21 @@ namespace SwitchBack.Controllers
             return Ok(response);
         }
 
+        [HttpGet("GetPublicacionesInfoCompByPubl/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetPublicacionesInfoCompByPubl(int id)
+        {
+            var publicacion = await _repository.GetPublicacionesInfoCompByPubl(id);
+            if (publicacion == null)
+            {
+                return NotFound();
+            }
+            return Ok(publicacion);
+        }
+
         [HttpGet("GetPublicacionesInfoCompByUsuario/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -375,6 +375,7 @@
     <Content Include="Views\PublicacionesDTO\Index.cshtml" />
     <Content Include="Views\PublicacionesDTO\Completa.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\PublicacionesDTO\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

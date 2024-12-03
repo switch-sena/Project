@@ -66,7 +66,6 @@ namespace ConsumeMicroservices.Controllers
 
             ViewBag.NombreBarr = new SelectList(barriosList, "IdBarr", "NombreBarr");
             return View();
-            //return View();
         }
 
         //GET 
@@ -149,7 +148,7 @@ namespace ConsumeMicroservices.Controllers
             }
             catch
             {
-                return View("Index", "Home");
+                return View("Error", "Home");
             }
         }
 

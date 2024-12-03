@@ -45,6 +45,28 @@ namespace SwitchBack.Repositories
             return await _context.Publicaciones.FindAsync(id);
         }
 
+        public async Task<PublicacionesDTO> GetPublicacionesInfoCompByPubl(int id)
+        {
+            return await _context.Publicaciones
+                .Where(p => p.IdPubl == id ) // Filtro por IdPubl
+                .Include(p => p.Usuarios) // Incluye la relación con Usuarios
+                .Include(p => p.PublModa).ThenInclude(pm => pm.Modalidades) // Incluye la relación con Modalidades
+                .Include(p => p.PublHabi).ThenInclude(ph => ph.Habilidades) // Incluye la relación con Habilidades
+                .Select(p => new PublicacionesDTO
+                {
+                    IdPubl = p.IdPubl,
+                    TituloPubl = p.TituloPubl,
+                    DescripcionPubl = p.DescripcionPubl,
+                    NombreUsuario = p.Usuarios.NombreUsua + " " + p.Usuarios.ApellidoUsua, // Nombre completo del usuario
+                    CopiaIdUsua = p.Usuarios.IdUsua, // el Id del usuario
+                    Habilidades = p.PublHabi.Select(ph => ph.Habilidades.NombreHabi).ToList(), // Lista de habilidades
+                    Modalidades = p.PublModa.Select(pm => pm.Modalidades.NombreModa).ToList(), // Lista de modalidades
+                    IdHabi = p.PublHabi.Select(ph => ph.Habilidades.IdHabi).ToList(), // Lista de los Id de las habilidades
+                    IdModa = p.PublModa.Select(pm => pm.Modalidades.IdModa).ToList()  // Lista de los Id de las modalidades
+                })
+                .FirstOrDefaultAsync();
+        }
+
         public async Task<List<PublicacionesDTO>> GetPublicacionesInfoCompByUsuario(int idUsua)
         {
             return await _context.Publicaciones
