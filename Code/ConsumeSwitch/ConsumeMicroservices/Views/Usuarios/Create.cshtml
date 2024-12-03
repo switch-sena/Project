@@ -10,13 +10,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear Usuario</title>
-
+    <link rel="icon" href="~/img/red-en-la-nube.png" type="image/png">
     <!-- Estilos y Scripts -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Registrousuario.css">
 
     <body>
         <div class="container" id="registration-form">
@@ -26,114 +27,114 @@
             {
                 @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Registrar Nuevo Usuario</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+                    <h4>Registrar Nuevo Usuario</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            @Html.HiddenFor(model => model.IdUsua)
+                    @Html.HiddenFor(model => model.IdUsua)
 
-            <!-- Nombre -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.NombreUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NombreUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca nombre" } })
-                    @Html.ValidationMessageFor(model => model.NombreUsua, "", new { @class = "text-danger" })
+                    <!-- Nombre -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NombreUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NombreUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca nombre" } })
+                            @Html.ValidationMessageFor(model => model.NombreUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Apellido -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ApellidoUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ApellidoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca apellido" } })
+                            @Html.ValidationMessageFor(model => model.ApellidoUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Género -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GeneroUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GeneroUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca género" } })
+                            @Html.ValidationMessageFor(model => model.GeneroUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Fecha de Nacimiento -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaNacimientoUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FechaNacimientoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca fecha de nacimiento" } })
+                            @Html.ValidationMessageFor(model => model.FechaNacimientoUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Celular -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CelularUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CelularUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca celular" } })
+                            @Html.ValidationMessageFor(model => model.CelularUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Correo -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CorreoUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CorreoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca correo" } })
+                            @Html.ValidationMessageFor(model => model.CorreoUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- ClaveUsua -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClaveUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClaveUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca la contraseña" } })
+                            @Html.ValidationMessageFor(model => model.ClaveUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- CorreoElectronicoUsua -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CorreoElectronicoUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CorreoElectronicoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca el correco electronico" } })
+                            @Html.ValidationMessageFor(model => model.CorreoElectronicoUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- LinksRsUsua -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LinksRsUsua, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LinksRsUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca el link de alguna red social" } })
+                            @Html.ValidationMessageFor(model => model.LinksRsUsua, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Barrios -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdBarr, "Barrio", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.IdBarr, ViewBag.NombreBarr as SelectList, "Seleccione un barrio", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IdBarr, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Botón de Enviar -->
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-lg btn-primary">Registrarse</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Apellido -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.ApellidoUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ApellidoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca apellido" } })
-                    @Html.ValidationMessageFor(model => model.ApellidoUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- Género -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.GeneroUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.GeneroUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca género" } })
-                    @Html.ValidationMessageFor(model => model.GeneroUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- Fecha de Nacimiento -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.FechaNacimientoUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FechaNacimientoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca fecha de nacimiento" } })
-                    @Html.ValidationMessageFor(model => model.FechaNacimientoUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- Celular -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.CelularUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CelularUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca celular" } })
-                    @Html.ValidationMessageFor(model => model.CelularUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- Correo -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.CorreoUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CorreoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca correo" } })
-                    @Html.ValidationMessageFor(model => model.CorreoUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- ClaveUsua -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.ClaveUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ClaveUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca la contraseña" } })
-                    @Html.ValidationMessageFor(model => model.ClaveUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- CorreoElectronicoUsua -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.CorreoElectronicoUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CorreoElectronicoUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca el correco electronico" } })
-                    @Html.ValidationMessageFor(model => model.CorreoElectronicoUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- LinksRsUsua -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.LinksRsUsua, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LinksRsUsua, new { htmlAttributes = new { @class = "form-control", placeholder = "Introduzca el link de alguna red soscial" } })
-                    @Html.ValidationMessageFor(model => model.LinksRsUsua, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- Barrios -->
-            <div class="form-group">
-                @Html.LabelFor(model => model.IdBarr, "Barrio", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.IdBarr, ViewBag.NombreBarr as SelectList, "Seleccione un barrio", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.IdBarr, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <!-- Botón de Enviar -->
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-lg text-white">Registrarse</button>
-                </div>
-            </div>
-        </div>
             }
 
             <div class="form-group text-right">
-                @Html.ActionLink("Volver a la lista", "Index", "Home", new { @class = "btn btn-default btn-lg" })
+                @Html.ActionLink("Volver a la lista", "Index", "Home", new { @class = "btn btn-info btn-lg" })
             </div>
         </div>
     </body>
