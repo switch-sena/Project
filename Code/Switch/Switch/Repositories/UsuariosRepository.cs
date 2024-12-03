@@ -82,7 +82,13 @@ namespace SwitchBack.Repositories
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                var usuarios = new Usuarios
+                var existingUser = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.CorreoUsua == usuarioDTO.CorreoUsua);
+                if (existingUser != null)
+                {
+                    throw new Exception("El usuario ya existe con el correo especificado.");
+                }
+                    var usuarios = new Usuarios
                 {
                     IdUsua = usuarioDTO.IdUsua,
                     NombreUsua = usuarioDTO.NombreUsua,
@@ -99,6 +105,7 @@ namespace SwitchBack.Repositories
 
                 _context.Usuarios.Add(usuarios);
                 await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
                 return true;
             }
             catch

@@ -50,22 +50,23 @@ namespace ConsumeMicroservices.Controllers
         //GET 
         public async Task<ActionResult> Create()
         {
-            //List<Barrios> EmpInfo = new List<Barrios>();
-            //using (var client = new HttpClient())
-            //{
-            //    client.BaseAddress = new Uri(apiUrl);
-            //    client.DefaultRequestHeaders.Clear();
-            //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-            //    HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
-            //    if (Res.IsSuccessStatusCode)
-            //    {
-            //        var EmpResponse = Res.Content.ReadAsStringAsync().Result;
-            //        EmpInfo = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
-            //    }
-            //}
+            List<Barrios> barriosList = new List<Barrios>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.GetAsync("api/Barrios/GetBarrios");
+                if (Res.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    barriosList = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse);
+                }
+            }
 
-            //return View(EmpInfo);
+            ViewBag.NombreBarr = new SelectList(barriosList, "IdBarr", "NombreBarr");
             return View();
+            //return View();
         }
 
         //GET 
@@ -130,20 +131,11 @@ namespace ConsumeMicroservices.Controllers
         {
             try
             {
-                if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
-                {
-                    bearerToken = Session["BearerToken"] as string;
-                }
-                else
-                {
-                    return RedirectToAction("Error", "Home");
-                }
-
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(apiUrl);
                     client.DefaultRequestHeaders.Clear();
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+
                     string json = JsonConvert.SerializeObject(usuarios);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     HttpResponseMessage Res = await client.PostAsync("api/Usuarios/PostUsuariosDTO", content);

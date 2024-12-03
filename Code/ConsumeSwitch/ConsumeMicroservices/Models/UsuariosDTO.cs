@@ -17,7 +17,6 @@ namespace ConsumeMicroservices.Models
         public string ClaveUsua { get; set; }
         public string CorreoElectronicoUsua { get; set; }
         public string LinksRsUsua { get; set; }
-        public string NombreBarr { get; set; }
         public int IdBarr { get; set; }
     }
 }

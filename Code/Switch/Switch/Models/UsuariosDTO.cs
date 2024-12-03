@@ -12,7 +12,7 @@
         public required string ClaveUsua { get; set; }
         public required string CorreoElectronicoUsua { get; set; }
         public string? LinksRsUsua { get; set; }
-        public string Barrios { get; set; }
+        public string? NombreBarr { get; set; }
         public int IdBarr { get; set; }
     }
 }

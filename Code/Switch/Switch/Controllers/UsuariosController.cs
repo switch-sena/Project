@@ -97,7 +97,7 @@ namespace SwitchBack.Controllers
             try
             {
                 var result = await _repository.PostUsuariosDTO(Usuario);
-                if (result)
+                    if (result)
                     return Ok(new { message = "Publicación creada exitosamente." });
 
                 return StatusCode(500, new { message = "Error al crear la publicación." });
