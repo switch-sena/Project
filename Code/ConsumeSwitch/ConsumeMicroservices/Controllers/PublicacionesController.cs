@@ -53,6 +53,8 @@ namespace ConsumeMicroservices.Controllers
         {
             return View();
         }
+
+        //GET
         public async Task<ActionResult> Index()
         {
             if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
@@ -81,7 +83,7 @@ namespace ConsumeMicroservices.Controllers
             return View(EmpInfo);
         }
 
-        //GET 
+        //GET
         public async Task<ActionResult> Delete(int id)
         {
             //validacion de que existe el token de inicio
@@ -99,7 +101,7 @@ namespace ConsumeMicroservices.Controllers
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-                HttpResponseMessage Res = await client.DeleteAsync("api/Publicaciones/DeletePublicaciones/" + id);
+                HttpResponseMessage Res = await client.DeleteAsync("api/Publicaciones/DeletePublicacionesDTO/" + id);
                 if (Res.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");

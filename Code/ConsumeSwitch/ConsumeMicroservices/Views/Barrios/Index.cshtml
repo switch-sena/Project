@@ -9,25 +9,42 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreBarr)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreBarr)
-        </td>
-        <td>
-            @Html.ActionLink("Edicion", "Update", new { id=item.IdBarr }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdBarr }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdBarr })
-        </td>
-    </tr>
-}
+<p>
+    @Html.ActionLink("Usuarios", "Index", "Usuarios")
+</p>
 
-</table>
+<p>
+    @Html.ActionLink("Habilidades", "Index", "Habilidades")
+</p>
+
+<p>
+    @Html.ActionLink("Publicaciones", "Index", "Publicaciones")
+</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBarr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreBarr)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBarr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreBarr)
+                </td>
+                <td>
+                    @Html.ActionLink("Edicion", "Update", new { id = item.IdBarr }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdBarr })
+                </td>
+            </tr>
+        }
+
+    </table>

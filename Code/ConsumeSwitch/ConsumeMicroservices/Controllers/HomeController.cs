@@ -48,12 +48,13 @@ namespace ConsumeMicroservices.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(Login model)
         {
+            
             string returnUrl = Url.Action("Index", "Home");
             Token token = new Token();
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "PublicacionesDTO");
+                return RedirectToAction("Index", "Home");
             }
 
             using (var client = new HttpClient())
@@ -73,6 +74,36 @@ namespace ConsumeMicroservices.Controllers
             }
 
             return RedirectToAction("Index", "PublicacionesDTO");
+        }
+        [HttpPost]
+        public async Task<ActionResult> Login2(Login model)
+        {
+
+            string returnUrl = Url.Action("Index", "Home");
+            Token token = new Token();
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                string json = JsonConvert.SerializeObject(model);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage Res = await client.PostAsync("api/Auth/Login", content);
+
+                if (Res.IsSuccessStatusCode)
+                {
+                    var res = Res.Content.ReadAsStringAsync().Result;
+                    token = JsonConvert.DeserializeObject<Token>(res);
+                    Session["BearerToken"] = token.token;
+                }
+            }
+
+            return RedirectToAction("Index", "Usuarios");
         }
     }
 }

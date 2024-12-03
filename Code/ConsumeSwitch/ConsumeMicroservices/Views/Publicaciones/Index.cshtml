@@ -7,39 +7,56 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "PublicacionesDTO")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TituloPubl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DescripcionPubl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CopiaIdUsua)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TituloPubl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DescripcionPubl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CopiaIdUsua)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Update", new { id=item.IdPubl }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdPubl }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdPubl })
-        </td>
-    </tr>
-}
+<p>
+    @Html.ActionLink("Barrios", "Index", "Barrios")
+</p>
 
-</table>
+<p>
+    @Html.ActionLink("Habilidades", "Index", "Habilidades")
+</p>
+
+<p>
+    @Html.ActionLink("Usuarios", "Index", "Usuarios")
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPubl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TituloPubl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPubl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CopiaIdUsua)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPubl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TituloPubl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionPubl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CopiaIdUsua)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Update", new { id = item.IdPubl }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdPubl }) |
+                    @Html.ActionLink("Delete", "Delete", "PublicacionesDTO", new { id = item.IdPubl })
+                </td>
+            </tr>
+        }
+
+    </table>

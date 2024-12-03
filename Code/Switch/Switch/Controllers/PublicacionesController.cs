@@ -3,6 +3,7 @@ using SwitchBack.Models;
 using SwitchBack.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using SwitchBack.Repositories;
+using System.Security.Claims;
 
 namespace SwitchBack.Controllers
 {
@@ -110,7 +111,19 @@ namespace SwitchBack.Controllers
 
             try
             {
-                var result = await _repository.PostPublicacionesDTO(publicacionDTO);
+                // Obtener el ID del usuario desde el token
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim == null)
+                {
+                    return Unauthorized("Token inválido o no contiene información del usuario.");
+                }
+
+                if (!int.TryParse(userIdClaim.Value, out int id))
+                {
+                    return BadRequest("El ID del usuario en el token no es válido.");
+                }
+
+                var result = await _repository.PostPublicacionesDTO(publicacionDTO, id);
                 if (result)
                     return Ok(new { message = "Publicación creada exitosamente." });
 

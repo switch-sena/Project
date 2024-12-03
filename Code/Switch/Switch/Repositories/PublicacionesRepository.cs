@@ -96,7 +96,7 @@ namespace SwitchBack.Repositories
             return await _context.SaveAsync();
         }
 
-        public async Task<bool> PostPublicacionesDTO(PublicacionesDTO publicacionDTO)
+        public async Task<bool> PostPublicacionesDTO(PublicacionesDTO publicacionDTO, int id)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
@@ -106,7 +106,7 @@ namespace SwitchBack.Repositories
                 {
                     TituloPubl = publicacionDTO.TituloPubl,
                     DescripcionPubl = publicacionDTO.DescripcionPubl,
-                    CopiaIdUsua = publicacionDTO.CopiaIdUsua
+                    CopiaIdUsua = id
                 };
 
                 _context.Publicaciones.Add(publicacion);

@@ -8,7 +8,6 @@ namespace ConsumeMicroservices.Models
 {
     public class Publicaciones
     {
-        [Key]
         public int IdPubl { get; set; }
 
         [Required]

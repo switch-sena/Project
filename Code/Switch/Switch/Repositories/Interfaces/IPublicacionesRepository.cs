@@ -10,7 +10,7 @@ namespace SwitchBack.Repositories.Interfaces
         Task<Publicaciones> GetPublicacionesById(int id);
         Task<PublicacionesDTO> GetPublicacionesInfoCompByPubl(int id);
         Task<List<PublicacionesDTO>> GetPublicacionesInfoCompByUsuario(int id);
-        Task<bool> PostPublicacionesDTO(PublicacionesDTO publicacionDTO);
+        Task<bool> PostPublicacionesDTO(PublicacionesDTO publicacionDTO, int id);
         Task<bool> PostPublicaciones(Publicaciones publicacion);
         Task<bool> UpdatePublicaciones(int id, Publicaciones publicacion);
         Task<bool> UpdatePublicacionesDTO(PublicacionesDTO publicaciones);

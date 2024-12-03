@@ -10,6 +10,19 @@
 <p>
     @Html.ActionLink("Create New", "Create", "Usuarios")
 </p>
+
+<p>
+    @Html.ActionLink("Barrios", "Index", "Barrios")
+</p>
+
+<p>
+    @Html.ActionLink("Habilidades", "Index", "Habilidades")
+</p>
+
+<p>
+    @Html.ActionLink("Publicaciones", "Index", "Publicaciones")
+</p>
+
 <table class="table">
     <tr>
         <th>
@@ -72,8 +85,6 @@
             @Html.DisplayFor(modelItem => item.CopiaIdBarr)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Update", new { id=item.IdUsua }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdUsua }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IdUsua })
         </td>
     </tr>
