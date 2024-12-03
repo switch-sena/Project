@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SwitchBack.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace SwitchBack.Controllers
 {
@@ -15,6 +16,34 @@ namespace SwitchBack.Controllers
         public UsuariosController(IUsuariosRepository repository)
         {
             _repository = repository;
+        }
+
+        // Obtener información del usuario logueado (basado en el token JWT)
+        [HttpGet("Me")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            // Obtener el ID del usuario desde el token
+            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                return Unauthorized("Token inválido o no contiene información del usuario.");
+            }
+
+            if (!int.TryParse(userIdClaim.Value, out int id))
+            {
+                return BadRequest("El ID del usuario en el token no es válido.");
+            }
+
+            // Obtener la información del usuario desde el repositorio
+            var usuario = await _repository.GetUsuariosDTOById(id);
+            if (usuario == null)
+            {
+                return NotFound("No se encontró la información del usuario.");
+            }
+
+            return Ok(usuario);
         }
 
         [HttpGet("GetUsuarios")]

@@ -44,7 +44,8 @@ namespace SwitchBack.Controllers
                     claims: new List<Claim>
                     {
                     new Claim(ClaimTypes.Name, login.Email), // Usamos el email como nombre de usuario
-                    new Claim(ClaimTypes.Role, "Admin") // Puedes ajustar el rol según sea necesario
+                    new Claim(ClaimTypes.Role, "Admin"), // Puedes ajustar el rol según sea necesario
+                    new Claim(ClaimTypes.NameIdentifier, usuario.IdUsua.ToString()) // ID del usuario
                     },
                     expires: DateTime.Now.AddMinutes(35),
                     signingCredentials: signinCredentials
