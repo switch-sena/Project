@@ -4,11 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Publicaciones</h2>
 
 <!-- Start Content -->
 
@@ -24,9 +20,12 @@
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="@Url.Action("Completa", "PublicacionesDTO", new { id = item.IdPubl })"
-                                    class="btn btn-info text-white mt-2 far fa-eye"></a>
+                                <button type="button" class="btn btn-info text-white mt-2 far fa-eye"
+                                        onclick="window.location.href='@Url.Action("Completa", "PublicacionesDTO", new { id = item.IdPubl })'">
+                                    Ver
+                                </button>
                             </li>
+
                         </ul>
                     </div>
                 </div>
@@ -43,4 +42,7 @@
             </div>
         </div>
     }
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 </div>

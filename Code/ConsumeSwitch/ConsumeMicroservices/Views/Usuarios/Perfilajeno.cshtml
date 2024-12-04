@@ -1,113 +1,105 @@
 ﻿@model ConsumeMicroservices.Models.UsuariosDTO
 
-@{
-    ViewBag.Title = "Perfilajeno";
-}
+<!DOCTYPE html>
+<html lang="es">
 
-<h2>Perfilajeno</h2>
+<head>
+    <meta charset="utf-8">
+    <title>Perfil - @Model.NombreUsua @Model.ApellidoUsua</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
 
-<div>
-    <h4>UsuariosDTO</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdUsua)
-        </dt>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-        <dd>
-            @Html.DisplayFor(model => model.IdUsua)
-        </dd>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreUsua)
-        </dt>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
-        <dd>
-            @Html.DisplayFor(model => model.NombreUsua)
-        </dd>
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApellidoUsua)
-        </dt>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/assets/css/Style.css" rel="stylesheet">
+</head>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApellidoUsua)
-        </dd>
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
+                    <!-- Suponiendo que `ProfileImageUrl` es un campo en el modelo -->
+                    <img class="img-fluid w-100 rounded-circle shadow-sm" src="~/img/Duveimar.jpeg" alt="Imagen de Perfil">
+                </div>
+                <div class="col-lg-7 text-center text-lg-left">
+                    <h3 class="text-white font-weight-normal mb-3">Soy</h3>
+                    <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">@Model.NombreUsua @Model.ApellidoUsua</h1>
+                    <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
+                    <div class="typed-text d-none">Perfil, Habilidades, Aprende, Contacta fácilmente</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    <!-- About Start -->
+    <div class="container-fluid py-5" id="about">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Sobre mí</h1>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 pb-4 pb-lg-0">
+                    <!-- Imagen de sobre mí, se puede adaptar a una propiedad de tu modelo -->
+                    <img class="img-fluid rounded w-100" src="~/img/Duveimar.jpeg" alt="Sobre mí">
+                </div>
+                <div class="col-lg-7">
+                    <p>Descripción breve sobre @Model.NombreUsua, sus habilidades.</p>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 py-2">
+                            <h6>Nombre: <span class="text-secondary">@Model.NombreUsua @Model.ApellidoUsua</span></h6>
+                        </div>
+                        <div class="col-sm-6 py-2">
+                            <h6>Cumpleaños: <span class="text-secondary">@Model.FechaNacimientoUsua.ToString("dd MMM yyyy")</span></h6>
+                        </div>
+                        <div class="col-sm-6 py-2">
+                            <h6>Celular: <span class="text-secondary">@Model.CelularUsua</span></h6>
+                        </div>
+                        <div class="col-sm-6 py-2">
+                            <h6>Email: <span class="text-secondary">@Model.CorreoUsua</span></h6>
+                        </div>
+                        <div class="col-sm-6 py-2">
+                            <h6>Dirección: <span class="text-secondary">@Model.NombreBarr</span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    <!-- Scroll to Bottom -->
+    <i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GeneroUsua)
-        </dt>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-        <dd>
-            @Html.DisplayFor(model => model.GeneroUsua)
-        </dd>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/typed/typed.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="~/lib/lightbox/js/lightbox.js"></script>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaNacimientoUsua)
-        </dt>
+    <!-- Template Javascript -->
+    <script src="~/Scripts/Main.js"></script>
+</body>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaNacimientoUsua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CelularUsua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CelularUsua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CorreoUsua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CorreoUsua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ClaveUsua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ClaveUsua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CorreoElectronicoUsua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CorreoElectronicoUsua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LinksRsUsua)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LinksRsUsua)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreBarr)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NombreBarr)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IdBarr)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdBarr)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index", "PublicacionesDTO")
-</p>
+</html>

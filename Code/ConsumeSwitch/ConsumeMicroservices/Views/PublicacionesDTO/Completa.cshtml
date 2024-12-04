@@ -4,114 +4,149 @@
     ViewBag.Title = "Completa";
 }
 
-<h2>Completa</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<div>
-    <h4>PublicacionesDTO</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdPubl)
-        </dt>
+<head>
+    <title>@ViewBag.Title - Product Detail Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <dd>
-            @Html.DisplayFor(model => model.IdPubl)
-        </dd>
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="icon" href="~/img/red-en-la-nube.png" type="image/png">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TituloPubl)
-        </dt>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
 
-        <dd>
-            @Html.DisplayFor(model => model.TituloPubl)
-        </dd>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DescripcionPubl)
-        </dt>
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
 
-        <dd>
-            @Html.DisplayFor(model => model.DescripcionPubl)
-        </dd>
+</head>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreUsuario)
-        </dt>
+<body>
+    <!-- Open Content -->
+    <section class="bg-light">
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img class="card-img img-fluid" src="~/assets/img/product_single_10.jpg" alt="Card image cap" id="product-detail">
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.NombreUsuario)
-        </dd>
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Titulo de la publicación -->
+                            <h1 class="h2">@Html.DisplayFor(model => model.TituloPubl)</h1>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Habilidades)
-        </dt>
+                            <!-- Nombre de la persona de quien es la publicación -->
+                            <p class="h3 py-2">@Html.DisplayFor(model => model.NombreUsuario)</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Habilidades)
-        </dd>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Nombre:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>@Html.DisplayFor(model => model.NombreUsuario)</strong></p>
+                                </li>
+                            </ul>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Modalidades)
-        </dt>
+                            <!-- Descripción de la publicación -->
+                            <h6>Descripcion:</h6>
+                            <p>@Html.DisplayFor(model => model.DescripcionPubl)</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Modalidades)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Habilidad a enseñar:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>@Html.DisplayFor(model => model.Habilidades)</strong></p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Modalidad:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong> @Html.DisplayFor(model => model.Modalidades)</strong></p>
+                                </li>
+                            </ul>
 
-<!--@model ConsumeMicroservices.Models.PublicacionesDTO
+                            <form action="" method="GET">
+                                <input type="hidden" name="product-title" value="@Html.DisplayFor(model => model.TituloPubl)">
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <button type="button" class="btn btn-info btn-lg text-white" name="submit"
+                                                onclick="window.open('/Usuarios/Perfilajeno/@Model.CopiaIdUsua')">
+                                            Perfil del Usuario
+                                        </button>
 
-@{
-    ViewBag.Title = "Completa";
-}
 
-<h2>Completa</h2>
+                                    </div>
+                                </div>
+                            </form>
 
-<div>
-    <h4>PublicacionesDTO</h4>
-    <hr />
-    <dl class="dl-horizontal">-->
-        <!-- Escondemos el ID -->
-        <!--<dt style="display:none;">
-            @Html.DisplayNameFor(model => model.IdPubl)
-        </dt>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Content -->
 
-        <dd style="display:none;">
-            @Html.DisplayFor(model => model.IdPubl)
-        </dd>-->
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
-        <!-- Titulo de la publicación en lugar de 'Active Wear' -->
-        <!--<dt>
-            <h1 class="h2">@Html.DisplayFor(model => model.TituloPubl)</h1>
-        </dt>-->
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+    <!-- Start Slider Script -->
+    <script src="assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            }
+            ]
+        });
+    </script>
+    <!-- End Slider Script -->
 
-        <!-- Nombre de la persona de quien es la publicación en lugar del precio -->
-        <!--<dt>
-            <p class="h3 py-2">@Html.DisplayFor(model => model.NombreUsuario)</p>
-        </dt>-->
+</body>
 
-        <!-- Descripción de la publicación en lugar de 'Description' -->
-        <!--<dt>
-            <h6>Description:</h6>
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DescripcionPubl)
-        </dd>-->
-
-        <!-- Habilidades y Modalidades con el mismo estilo que 'Avaliable Color' -->
-        <!--<dt>
-            <h6>Avaliable Color:</h6>
-        </dt>
-        <dd>
-            <p class="text-muted"><strong>@Html.DisplayFor(model => model.Habilidades) / @Html.DisplayFor(model => model.Modalidades)</strong></p>
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>-->
-
+</html>

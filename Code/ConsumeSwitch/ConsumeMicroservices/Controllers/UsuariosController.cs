@@ -117,7 +117,7 @@ namespace ConsumeMicroservices.Controllers
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
-                HttpResponseMessage Res = await client.DeleteAsync("api/Usuarios/DeleteUsuarios/" + id);
+                HttpResponseMessage Res = await client.DeleteAsync("api/Usuarios/DeleteUsuariosDTO/" + id);
                 if (Res.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index");
