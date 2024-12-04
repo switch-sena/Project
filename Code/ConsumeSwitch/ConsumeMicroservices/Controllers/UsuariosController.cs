@@ -160,6 +160,40 @@ namespace ConsumeMicroservices.Controllers
             return View(EmpInfo);
         }
 
+        //GET
+        public async Task<ActionResult> Perfilajeno(int id)
+        {
+            if (!string.IsNullOrEmpty(Session["BearerToken"].ToString()))
+            {
+                bearerToken = Session["bearerToken"] as string;
+            }
+            else
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            UsuariosDTO EmpInfo = new UsuariosDTO();
+            List<Barrios> EmpInfo2 = new List<Barrios>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", bearerToken);
+                HttpResponseMessage Res = await client.GetAsync("api/Usuarios/GetUsuariosDTOById/" + id);
+                HttpResponseMessage Res2 = await client.GetAsync("api/Barrios/GetBarrios");
+
+                if (Res.IsSuccessStatusCode && Res2.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Res.Content.ReadAsStringAsync().Result;
+                    var EmpResponse2 = Res2.Content.ReadAsStringAsync().Result;
+                    EmpInfo = JsonConvert.DeserializeObject<UsuariosDTO>(EmpResponse);
+                    EmpInfo2 = JsonConvert.DeserializeObject<List<Barrios>>(EmpResponse2);
+                }
+            }
+            ViewBag.NombreBarr = new SelectList(EmpInfo2, "IdBarr", "NombreBarr");
+            return View(EmpInfo);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Create(UsuariosDTO usuarios)
         {

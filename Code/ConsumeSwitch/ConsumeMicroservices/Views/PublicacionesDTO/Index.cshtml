@@ -11,6 +11,7 @@
 </p>
 
 <!-- Start Content -->
+
 <div class="row">
     @foreach (var item in Model)
     {
@@ -23,8 +24,8 @@
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="@Url.Action("Completa", new { id = item.IdPubl })"
-                                   class="btn btn-info text-white mt-2 far fa-eye"></a>
+                                <a href="@Url.Action("Completa", "PublicacionesDTO", new { id = item.IdPubl })"
+                                    class="btn btn-info text-white mt-2 far fa-eye"></a>
                             </li>
                         </ul>
                     </div>

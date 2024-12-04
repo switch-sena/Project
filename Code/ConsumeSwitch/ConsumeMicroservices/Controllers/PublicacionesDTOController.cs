@@ -159,7 +159,7 @@ namespace ConsumeMicroservices.Controllers
 
                     if (Res.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "PublicacionesDTO");
                     }
                 }
                 return RedirectToAction("Index", "Home");
