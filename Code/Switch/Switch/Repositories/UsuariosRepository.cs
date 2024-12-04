@@ -136,7 +136,6 @@ namespace SwitchBack.Repositories
             usuario.FechaNacimientoUsua = usuario.FechaNacimientoUsua;
             usuario.CelularUsua = usuarios.CelularUsua ?? usuario.CelularUsua;
             usuario.CorreoUsua = usuarios.CorreoUsua ?? usuario.CorreoUsua;
-            usuario.ClaveUsua = usuarios.ClaveUsua ?? usuario.ClaveUsua;
             usuario.CorreoElectronicoUsua = usuario.CorreoElectronicoUsua ?? usuario.CorreoElectronicoUsua;
             usuario.LinksRsUsua = usuario.LinksRsUsua ?? usuario.LinksRsUsua;
             usuario.CopiaIdBarr = usuarios.IdBarr;

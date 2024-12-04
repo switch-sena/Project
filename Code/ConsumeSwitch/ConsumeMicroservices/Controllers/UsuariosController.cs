@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -166,6 +167,7 @@ namespace ConsumeMicroservices.Controllers
             {
                 using (var client = new HttpClient())
                 {
+                    usuarios.ClaveUsua = ConvertirSha256(usuarios.ClaveUsua);
                     client.BaseAddress = new Uri(apiUrl);
                     client.DefaultRequestHeaders.Clear();
 
@@ -235,6 +237,7 @@ namespace ConsumeMicroservices.Controllers
                 {
                     return RedirectToAction("Error", "Home");
                 }
+
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(apiUrl);
@@ -246,7 +249,7 @@ namespace ConsumeMicroservices.Controllers
 
                     if (Res.IsSuccessStatusCode)
                     {
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Perfil");
                     }
                 }
                 return RedirectToAction("Index", "Home");
@@ -255,6 +258,26 @@ namespace ConsumeMicroservices.Controllers
             {
                 return View("Error", "Home");
             }
+        }
+
+        public static string ConvertirSha256(string texto)
+        {
+            // Usamos StringBuilder para construir el resultado en hexadecimal
+            StringBuilder Sb = new StringBuilder();
+
+            // Usamos SHA256 para obtener el hash
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // Codificamos el texto a bytes con UTF8
+                byte[] result = sha256.ComputeHash(Encoding.UTF8.GetBytes(texto));
+
+                // Convertimos cada byte a su valor hexadecimal (formato x2, 2 caracteres hexadecimales)
+                foreach (byte b in result)
+                {
+                    Sb.Append(b.ToString("x2"));
+                }
+            }
+            return Sb.ToString();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -57,6 +58,8 @@ namespace ConsumeMicroservices.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            model.Password = ConvertirSha256(model.Password);
+
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(apiUrl);
@@ -75,6 +78,7 @@ namespace ConsumeMicroservices.Controllers
 
             return RedirectToAction("Index", "PublicacionesDTO");
         }
+
         [HttpPost]
         public async Task<ActionResult> Login2(Login model)
         {
@@ -89,6 +93,7 @@ namespace ConsumeMicroservices.Controllers
 
             using (var client = new HttpClient())
             {
+                model.Password = ConvertirSha256(model.Password);
                 client.BaseAddress = new Uri(apiUrl);
                 client.DefaultRequestHeaders.Clear();
                 string json = JsonConvert.SerializeObject(model);
@@ -104,6 +109,33 @@ namespace ConsumeMicroservices.Controllers
             }
 
             return RedirectToAction("Index", "Usuarios");
+        }
+
+        public ActionResult Logout()
+        {
+            // Eliminar el token de la sesión
+            Session["BearerToken"] = null;
+            return RedirectToAction("Index", "Home"); 
+        }
+
+        public static string ConvertirSha256(string texto)
+        {
+            // Usamos StringBuilder para construir el resultado en hexadecimal
+            StringBuilder Sb = new StringBuilder();
+
+            // Usamos SHA256 para obtener el hash
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // Codificamos el texto a bytes con UTF8
+                byte[] result = sha256.ComputeHash(Encoding.UTF8.GetBytes(texto));
+
+                // Convertimos cada byte a su valor hexadecimal (formato x2, 2 caracteres hexadecimales)
+                foreach (byte b in result)
+                {
+                    Sb.Append(b.ToString("x2"));
+                }
+            }
+            return Sb.ToString();
         }
     }
 }

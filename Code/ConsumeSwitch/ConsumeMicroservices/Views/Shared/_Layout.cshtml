@@ -32,18 +32,18 @@
             </button>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link", style = "color: #F8F9FA;" })</li>
+                    <li>@Html.ActionLink("Inicio", "Index", "PublicacionesDTO", new { area = "" }, new { @class = "nav-link", style = "color: #F8F9FA;" })</li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <!-- "ms-auto" alinea este grupo a la derecha -->
                     <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")" class="nav-link" style="color: #F8F9FA;">
+                        <a href="@Url.Action("Logout", "Home")" class="nav-link" style="color: #F8F9FA;">
                             <i class="fas fa-sign-out-alt"></i> Cerrar sesión
                         </a>
                     </li>
                     <!-- Botón para ir al perfil del usuario -->
                     <li class="nav-item">
-                        <a href="@Url.Action("Index", "Usuarios")" class="nav-link" style="color: #F8F9FA;">
+                        <a href="@Url.Action("Perfil", "Usuarios")" class="nav-link" style="color: #F8F9FA;">
                             <i class="fas fa-user-circle"></i> Perfil
                         </a>
                     </li>
